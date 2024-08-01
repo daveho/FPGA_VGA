@@ -6,6 +6,9 @@ module hcount_tb();
 
   `include "timing.vh"
 
+  // Tick counter (used by  `TICK macro)
+  integer ticks;
+
   // The testbench just needs to control -RST and CLK
   reg nrst, clk;
 
@@ -23,6 +26,8 @@ module hcount_tb();
                           .hEndActive( hEndActive ) );
 
   initial begin
+    // set tick count to 0
+    ticks = 0;
     // generate dump file we can inspect using gtkwave
     $dumpfile( "hcount_tb.vcd" );
     $dumpvars;

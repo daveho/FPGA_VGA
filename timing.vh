@@ -1,5 +1,11 @@
 // Timing constants
 
+// Number of clock ticks per scanline
+localparam TICKS_PER_SCANLINE = 800;
+
+// Number of scanlines per frame
+localparam SCANLINES_PER_FRAME = 525;
+
 // Horizontal timing
 localparam H_COUNT_END = 799;
 localparam H_BEGIN_PULSE = 655;

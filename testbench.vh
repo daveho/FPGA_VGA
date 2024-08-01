@@ -30,6 +30,7 @@
 
 // Tick once
 `define TICK( clk ) \
+  ticks = ticks + 1; \
   clk = 1; \
   #1; \
   clk = 0; \

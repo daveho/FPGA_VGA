@@ -6,6 +6,9 @@ module vcount_tb();
 
   `include "timing.vh"
 
+  // Tick counter (used by  `TICK macro)
+  integer ticks;
+
   // Loop counter (used by `GENCLOCK macro)
   integer k;
 
@@ -49,9 +52,13 @@ module vcount_tb();
                          .vCount( vCount ) );
 
   initial begin
+    // set tick count to 0
+    ticks = 0;
+/*
     // generate dump file we can inspect using gtkwave
     $dumpfile( "vcount_tb.vcd" );
     $dumpvars;
+*/
   end
 
   integer i; // loop counter
@@ -70,7 +77,7 @@ module vcount_tb();
     `ASSERT( vCount == V_COUNT_INITIAL_VAL );
 
     // generate one clock pulse: this should increment the vertical count
-    `GENCLOCK( 1, clk );
+    `TICK( clk );
     `ASSERT( vCount == V_COUNT_INITIAL_VAL + 12'd1 );
 
     // advance time until vCount == V_BEGIN_PULSE
@@ -94,9 +101,53 @@ module vcount_tb();
     // vBeginPulse should be asserted
     `ASSERT( vBeginPulse );
 
-    // vBeginPulse should only be asserted for one clock
+    // vBeginPulse should only be asserted for one cycle
     `TICK( clk );
     `ASSERT( ~vBeginPulse );
+
+    // advance time until vEndPulse is asserted
+    while ( ~vCountEnd ) begin
+      `TICK( clk );
+    end
+
+    // vEndPulse should only be asserted for one cycle
+    `TICK( clk );
+    `ASSERT( ~vEndPulse );
+
+    // Now that we've observed the pulse generation timing events, which are
+    // synchronized to hCountEnd, we can run through the other vertical
+    // timing signals, which are just combinational outputs asserted when
+    // the vertical count matches an expected value. By running them through
+    // in order, we should go through slighly less than 1 frame of clock cycles.
+
+    // advance to vCountEnd
+    while ( ~vCountEnd ) begin
+      `TICK( clk );
+    end
+    `ASSERT( vCount == V_COUNT_END );
+
+    // advance to vCountZero
+    while ( ~vCountZero ) begin
+      `TICK( clk );
+    end
+    `ASSERT( vCount == V_COUNT_ZERO );
+
+    // advance to vVisEnd
+    while ( ~vVisEnd ) begin
+      `TICK( clk );
+    end
+    `ASSERT( vCount == V_VIS_END );
+
+    // advance until vertical count returns to initial value - 1
+    // and hCountEnd is asserted. This should be exactly one
+    // frame's worth of ticks, minus 1 (since this is the end of
+    // a scanline, and out of reset we start at the beginning of
+    // a scanline)
+    while ( ( vCount != V_COUNT_INITIAL_VAL ) | ~hCountEnd ) begin
+      `TICK( clk );
+    end
+    //$display( "final ticks: %d", ticks );
+    `ASSERT( ticks == (TICKS_PER_SCANLINE * SCANLINES_PER_FRAME) - 1 );
 
     $display( "All tests passed!" );
 
