@@ -58,30 +58,47 @@ module vcount_tb();
 
   initial begin
     // generate a reset pulse
-    nrst = 0;
-    clk = 0;
-    #1;
-    clk = 1;
-    #1;
-    nrst = 1;
-    clk = 0;
-    #1;
+    `RESET( nrst, clk );
 
     // both hcount and vcount are now out of reset
 
-    $display( "vCount=%d", vCount );
     `ASSERT( vCount == V_COUNT_INITIAL_VAL );
 
     // generate enough ticks to take us to the end of the hsync pulse:
     // this is just before the vertical count will be incremented
     `GENCLOCK( H_END_PULSE, clk );
-    $display( "vCount=%d", vCount );
     `ASSERT( vCount == V_COUNT_INITIAL_VAL );
 
     // generate one clock pulse: this should increment the vertical count
     `GENCLOCK( 1, clk );
-    $display( "vCount=%d", vCount );
     `ASSERT( vCount == V_COUNT_INITIAL_VAL + 12'd1 );
+
+    // advance time until vCount == V_BEGIN_PULSE
+    while ( vCount != V_BEGIN_PULSE ) begin
+      `TICK( clk );
+    end
+
+    // vBeginPulse should not be asserted yet: that will happen
+    // when the horizontal counter reaches the end
+    `ASSERT( vBeginPulse == 1'b0 );
+
+    // advance time until hCountEnd is asserted: when this happens,
+    // vBeginPulse should also be asserted
+    while ( ~hCountEnd ) begin
+      `TICK( clk );
+    end
+
+    // vertical count should be the same as before
+    `ASSERT( vCount == V_BEGIN_PULSE );
+
+    // vBeginPulse should be asserted
+    `ASSERT( vBeginPulse );
+
+    // vBeginPulse should only be asserted for one clock
+    `TICK( clk );
+    `ASSERT( ~vBeginPulse );
+
+    $display( "All tests passed!" );
 
   end
 

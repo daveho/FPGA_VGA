@@ -33,8 +33,8 @@ module vcount( input nrst,
 
   // Timing outputs
   assign vCountZero = ( count == V_COUNT_ZERO );
-  assign vBeginPulse = ( count == V_BEGIN_PULSE );
-  assign vEndPulse = ( count == V_END_PULSE );
+  assign vBeginPulse = ( hCountEnd & count == V_BEGIN_PULSE );
+  assign vEndPulse = ( hCountEnd & count == V_END_PULSE );
   assign vVisEnd = ( count == V_VIS_END );
   assign vCountEnd = ( count == V_COUNT_END );
   assign vEndActive = ( count == V_END_ACTIVE );

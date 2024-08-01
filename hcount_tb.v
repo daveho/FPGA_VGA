@@ -32,14 +32,7 @@ module hcount_tb();
 
   initial begin
     // generate a reset pulse
-    nrst = 0;
-    clk = 0;
-    #1;
-    clk = 1;
-    #1;
-    nrst = 1;
-    clk = 0;
-    #1;
+    `RESET( nrst, clk );
 
     // module is now out of reset
 
@@ -55,10 +48,7 @@ module hcount_tb();
       `ASSERT( hEndActive == ( i == H_END_ACTIVE ) );
 
       // Generate one clock pulse
-      clk = 1;
-      #1;
-      clk = 0;
-      #1;
+      `TICK( clk );
     end
 
     // If we got here, all of the test assertions succeeded
