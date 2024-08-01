@@ -6,17 +6,8 @@ module vcount_tb();
 
   `include "timing.vh"
 
+  // Loop counter (used by `GENCLOCK macro)
   integer k;
-
-  // helper task to generate a specified number of clock pulses
-  task automatic genclock( input [11:0] ticks, output clk ); begin
-    for ( k = 0; k < ticks; k++ ) begin
-      clk = 1;
-      #1;
-      clk = 0;
-      #1;
-    end
-  end endtask
 
   // The testbench just needs to control -RST and CLK
   reg nrst, clk;
@@ -83,12 +74,12 @@ module vcount_tb();
 
     // generate enough ticks to take us to the end of the hsync pulse:
     // this is just before the vertical count will be incremented
-    genclock( H_END_PULSE, clk );
+    `GENCLOCK( H_END_PULSE, clk );
     $display( "vCount=%d", vCount );
     `ASSERT( vCount == V_COUNT_INITIAL_VAL );
 
     // generate one clock pulse: this should increment the vertical count
-    genclock( 1, clk );
+    `GENCLOCK( 1, clk );
     $display( "vCount=%d", vCount );
     `ASSERT( vCount == V_COUNT_INITIAL_VAL + 12'd1 );
 

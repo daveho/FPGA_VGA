@@ -18,4 +18,15 @@
     $finish; \
   end
 
+// Generate specified number of clock ticks.
+// Assumes that an integer variable k is available to use
+// as the loop counter.
+`define GENCLOCK( ticks, clk ) \
+  for ( k = 0; k < ticks; k++ ) begin \
+    clk = 1; \
+    #1; \
+    clk = 0; \
+    #1; \
+  end
+
 // vim:ft=verilog:
