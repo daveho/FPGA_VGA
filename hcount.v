@@ -10,7 +10,7 @@ module hcount(input nrst,
               output hBeginActive,
               output hEndActive);
 
-  `include "timing.hv"
+  `include "timing.vh"
 
   reg [11:0] count;
 

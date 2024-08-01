@@ -4,5 +4,5 @@ set_io --warn-no-port red 4
 set_io --warn-no-port green 3
 set_io --warn-no-port blue 48
 set_io --warn-no-port intense 45
-set_io --warn-no-port hsync 47
-set_io --warn-no-port vsync 46
+set_io --warn-no-port hsync 46
+set_io --warn-no-port vsync 47

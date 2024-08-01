@@ -19,7 +19,7 @@
 
 module hcount_tb();
 
-  `include "timing.hv"
+  `include "timing.vh"
 
   // The testbench just needs to control -RST and CLK
   reg nrst, clk;
