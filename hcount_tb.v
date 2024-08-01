@@ -19,6 +19,8 @@
 
 module hcount_tb();
 
+  `include "timing.hv"
+
   // The testbench just needs to control -RST and CLK
   reg nrst, clk;
 
@@ -60,12 +62,12 @@ module hcount_tb();
     // to make sure they're right
     for ( i = 0; i < 800; i++) begin
       // Check that output values are correct
-      `ASSERT( hCountEnd == ( i == 799 ) );
-      `ASSERT( hBeginPulse == ( i == 655 ) );
-      `ASSERT( hEndPulse == ( i == 751 ) );
-      `ASSERT( hVisEnd == ( i == 639 ) );
-      `ASSERT( hBeginActive == ( i == 793 ) );
-      `ASSERT( hEndActive == ( i == 633 ) );
+      `ASSERT( hCountEnd == ( i == H_COUNT_END ) );
+      `ASSERT( hBeginPulse == ( i == H_BEGIN_PULSE ) );
+      `ASSERT( hEndPulse == ( i == H_END_PULSE ) );
+      `ASSERT( hVisEnd == ( i == H_VIS_END ) );
+      `ASSERT( hBeginActive == ( i == H_BEGIN_ACTIVE ) );
+      `ASSERT( hEndActive == ( i == H_END_ACTIVE ) );
 
       // Generate one clock pulse
       clk = 1;

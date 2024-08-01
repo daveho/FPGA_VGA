@@ -10,6 +10,8 @@ module hcount(input nrst,
               output hBeginActive,
               output hEndActive);
 
+  `include "timing.hv"
+
   reg [11:0] count;
 
   always @(posedge clk) begin
@@ -26,11 +28,11 @@ module hcount(input nrst,
   end
 
   // Timing outputs
-  assign hCountEnd = (count == 12'd799);
-  assign hBeginPulse = (count == 12'd655);
-  assign hEndPulse = (count == 12'd751);
-  assign hVisEnd = (count == 12'd639);
-  assign hBeginActive = (count == 12'd793);
-  assign hEndActive = (count == 12'd633);
+  assign hCountEnd = (count == H_COUNT_END);
+  assign hBeginPulse = (count == H_BEGIN_PULSE);
+  assign hEndPulse = (count == H_END_PULSE);
+  assign hVisEnd = (count == H_VIS_END);
+  assign hBeginActive = (count == H_BEGIN_ACTIVE);
+  assign hEndActive = (count == H_END_ACTIVE);
 
 endmodule
