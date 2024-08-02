@@ -52,11 +52,11 @@ module readout( // Inputs
 
         // If we're in the vertical activity region, and the hsync pulse
         // begin signal is asserted (which happens outside the horizontal
-        // activity period), then update either the readout
-        // address register (by setting it to the current value of the
-        // row begin address register) or the row begin address register
-        // (by setting it to the current value of the readout address
-        // register).
+        // activity period, so active will be de-asserted), update either
+        // the readout address register (by setting it to the current value
+        // of the row begin address register) or the row begin address
+        // register (by setting it to the current value of the readout
+        // address register).
         if ( vActive & hBeginPulse ) begin
           if ( vCount == 4'b1111 ) begin
             // We've reached the last pixel row in the current character row,
