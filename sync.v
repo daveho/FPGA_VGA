@@ -18,19 +18,21 @@ module sync( // Inputs
              output vSync,
              output hVis,
              output vVis,
-             output nVis);
+             output nVis,
+             output vActive );
 
   // registers for registered outputs
-  reg hSyncReg, vSyncReg, hVisReg, vVisReg;
+  reg hSyncReg, vSyncReg, hVisReg, vVisReg, vActiveReg;
 
   always @( posedge clk ) begin
     if ( nrst == 1'b0 ) begin
       // in reset: hSync and vSync are high,
-      // hVis is true, vVis is false
+      // hVis is true, vVis is false, vActive is false
       hSyncReg <= 1'b1;
       vSyncReg <= 1'b1;
       hVisReg <= 1'b1;
       vVisReg <= 1'b0;
+      vActiveReg <= 1'b0;
     end else begin
       // not in reset
 
@@ -72,6 +74,20 @@ module sync( // Inputs
         // end of vertical visible region
         vVisReg <= 1'b0;
       end
+
+      // update vActive if needed
+      if ( hCountEnd & vCountEnd ) begin
+        // Begin vertical activity. Note that this happens
+        // at the end of the next-to-last scanline of the frame.
+        // This allows readout activity to start on the last
+        // scanline of the frame, which preceeds the first
+        // visible scanline (in the next frame.)
+        vActiveReg <= 1'b1;
+      end else if ( vEndActive & hCountEnd ) begin
+        // We're at the end of the last scanline of vertical
+        // activity, so vActive is turned off here.
+        vActiveReg = 1'b0;
+      end
     end
   end
 
@@ -85,5 +101,7 @@ module sync( // Inputs
   // if either hVis or vVis is not asserted,
   // then nVis is high (not asserted)
   assign nVis = ~hVis | ~vVis;
+
+  assign vActive = vActiveReg;
 
 endmodule
