@@ -97,6 +97,10 @@ module readout_tb();
     // set tick count to 0
     ticks = 0;
 
+    // generate dump file we can inspect using gtkwave
+    $dumpfile( "readout_tb.vcd" );
+    $dumpvars;
+
     // generate a reset pulse
     `RESET( nrst, clk );
 
@@ -122,8 +126,9 @@ module readout_tb();
     // being fetched from VRAM)
     `ASSERT( readoutAddr == 13'd0 );
 
-    // Advancing 4 cycles should lead to the readout address being
-    // incremented (the first attribute fetch)
+    // Advancing 3 cycles should lead to the readout address being
+    // incremented (the first attribute fetch), meaning we'll see the
+    // incremented readout address on the 4th cycle
     `TICK( clk );
     `ASSERT( readoutAddr == 13'd0 );
     `TICK( clk );
