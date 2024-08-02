@@ -106,7 +106,7 @@ module vcount_tb();
     `ASSERT( ~vBeginPulse );
 
     // advance time until vEndPulse is asserted
-    while ( ~vCountEnd ) begin
+    while ( ~vEndPulse ) begin
       `TICK( clk );
     end
 
