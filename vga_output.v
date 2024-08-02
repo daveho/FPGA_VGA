@@ -13,6 +13,7 @@ module vga_output( // Inputs
                    input pixel,
                    input hSync,
                    input vSync,
+                   input nVis, // active-low visibility signal
                    // Outputs
                    output redOut,
                    output greenOut,
@@ -22,25 +23,31 @@ module vga_output( // Inputs
                    output vSyncOut );
 
   // output registers
-  reg redOutReg, greenOutReg, blueOutReg, intenseOuttReg, hSyncOutReg, vSyncOutReg;
+  reg redOutReg, greenOutReg, blueOutReg, intenseOutReg, hSyncOutReg, vSyncOutReg;
 
-  // This module just synchronizes selected color and sync signals
-  // using registers. Reset behavior is managed by the modules
-  // that generate the "raw" signals (e.g., the sync module,
-  // the pixel generator module, etc.)
+  // This module just synchronizes selected color, sync,
+  // and visibility signals using registers. Reset behavior is
+  // managed by the modules that generate the "raw" signals
+  // (e.g., the sync module, the pixel generator module, etc.)
   always @( posedge clk ) begin
-    if ( pixel == 1'b1 ) begin
+    if ( nVis == 1'b1 ) begin
+      // -VIS is not asserted, so output black
+      redOutReg <= 1'b0;
+      greenOutReg <= 1'b0;
+      blueOutReg <= 1'b0;
+      intenseOutReg <= 1'b0;
+    end else if ( pixel == 1'b1 ) begin
       // foreground pixel color
       redOutReg <= fgRed;
       greenOutReg <= fgGreen;
       blueOutReg <= fgBlue;
-      intenseOuttReg <= fgIntense;
+      intenseOutReg <= fgIntense;
     end else begin
       // background pixel color
       redOutReg <= bgRed;
       greenOutReg <= bgGreen;
       blueOutReg <= bgBlue;
-      intenseOuttReg <= bgIntense;
+      intenseOutReg <= bgIntense;
     end
 
     // sync signals
@@ -52,7 +59,7 @@ module vga_output( // Inputs
   assign redOut = redOutReg;
   assign greenOut = greenOutReg;
   assign blueOut = blueOutReg;
-  assign intenseOut = intenseOuttReg;
+  assign intenseOut = intenseOutReg;
   assign hSyncOut = hSyncOutReg;
   assign vSyncOut = vSyncOutReg;
 
