@@ -51,6 +51,8 @@ module vcount_tb();
                          .vEndActive( vEndActive ),
                          .vCount( vCount ) );
 
+  integer i; // loop counter
+
   initial begin
     // set tick count to 0
     ticks = 0;
@@ -59,11 +61,7 @@ module vcount_tb();
     $dumpfile( "vcount_tb.vcd" );
     $dumpvars;
 */
-  end
 
-  integer i; // loop counter
-
-  initial begin
     // generate a reset pulse
     `RESET( nrst, clk );
 
