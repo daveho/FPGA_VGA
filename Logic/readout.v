@@ -35,8 +35,11 @@ module readout( // Inputs
       active <= 1'b0;
       rowBeginAddrReg <= 13'd0;
       readoutAddrReg <= 13'd0;
+    end else if ( vSync == 1'b0 ) begin
+      // vSync pulse is being generated: clear rowBeginAddrReg
+      rowBeginAddrReg <= 13'd0;
     end else begin
-      // not in reset
+      // not in reset or vsync pulse
 
       if ( ~active ) begin
         // Readout activity currently off

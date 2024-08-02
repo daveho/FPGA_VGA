@@ -12,10 +12,16 @@ hcount_tb.vvp : hcount_tb.v hcount.v timing.vh testbench.vh
 vcount_tb.vvp : vcount_tb.v vcount.v hcount.v timing.vh testbench.vh
 	$(TOOLS)/iverilog -s vcount_tb -o $@ vcount_tb.v vcount.v hcount.v
 
+readout_tb.vvp : readout_tb.v readout.v sync.v vcount.v hcount.v timing.vh testbench.vh
+	$(TOOLS)/iverilog -s readout_tb -o $@ readout_tb.v readout.v sync.v vcount.v hcount.v
+
 test_hcount : hcount_tb.vvp
 	$(TOOLS)/vvp $^
 
 test_vcount : vcount_tb.vvp
+	$(TOOLS)/vvp $^
+
+test_readout : readout_tb.vvp
 	$(TOOLS)/vvp $^
 
 clean :
