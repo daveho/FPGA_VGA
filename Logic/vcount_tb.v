@@ -153,4 +153,4 @@ module vcount_tb();
 
   end
 
-endmodule;
+endmodule
