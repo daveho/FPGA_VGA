@@ -121,9 +121,9 @@ module icevga3( input nrst,
 
   // use the high 4 bits of the counter to generate
   // the foreground color signals
-  assign fgRed = count[0];
-  assign fgGreen = count[1];
-  assign fgBlue = count[2];
-  assign fgIntense = count[3];
+  assign fgRed = count[6];
+  assign fgGreen = count[7];
+  assign fgBlue = count[8];
+  assign fgIntense = count[9];
 
 endmodule
