@@ -105,8 +105,33 @@ module readout_tb();
     while ( ~vEndPulse ) begin
       `TICK( clk );
     end
+    $display( "v end pulse at vcount %d, ticks=%d", vCount, ticks );
     `ASSERT( readoutAddr == 13'd0 );
 
+    // advance until vActive and hBeginActive are both asserted.
+    // this marks the beginning of readouot activity (just before the
+    // first visible scanline)
+    while ( ~(vActive & hBeginActive) ) begin
+      `TICK( clk );
+    end
+    `ASSERT( vActive );
+    `ASSERT( hBeginActive );
+    $display( "begin activity, vCount=%d, ticks=%d", vCount, ticks );
+
+    // Readout address should still be 0 (this is the first character
+    // being fetched from VRAM)
+    `ASSERT( readoutAddr == 13'd0 );
+
+    // Advancing 4 cycles should lead to the readout address being
+    // incremented (the first attribute fetch)
+    `TICK( clk );
+    `ASSERT( readoutAddr == 13'd0 );
+    `TICK( clk );
+    `ASSERT( readoutAddr == 13'd0 );
+    `TICK( clk );
+    `ASSERT( readoutAddr == 13'd0 );
+    `TICK( clk );
+    `ASSERT( readoutAddr == 13'd1 );
 
     $display( "All tests passed!" );
   end

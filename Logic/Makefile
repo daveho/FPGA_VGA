@@ -1,6 +1,13 @@
+# This Makefile is just for running testbenches.
+# To synthesize the design and upload it to the Upduino 3.0,
+# run the commands
+#
+#   apio build
+#   apio upload
+
 TOOLS = $(HOME)/.apio/packages/tools-oss-cad-suite/bin
 
-.PHONY: all test_hcount
+.PHONY: all test_hcount test_vcount test_readout
 
 all :
 	@echo "Use 'test_XXX' target to run the test for the XXX module"

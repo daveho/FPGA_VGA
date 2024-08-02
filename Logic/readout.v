@@ -76,6 +76,9 @@ module readout( // Inputs
       end else begin
         // Readout activity is occurring
 
+        // increment count
+        count <= count + 3'd1;
+
         // If count is 0 or 4, increment readout address
         // (so that the address of a character or attribute to
         // fetch is asserted when the count is 1 or 5.)
