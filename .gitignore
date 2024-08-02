@@ -1,14 +1,1 @@
 *.swp
-/.sconsign.dblite
-/FPGA_VGA-backups
-/*.kicad_prl
-/_autosave*
-/abc.history
-/*.asc
-/*.bin
-/*.json
-/*.out
-/~*
-/#*
-/*.vvp
-/*.vcd
