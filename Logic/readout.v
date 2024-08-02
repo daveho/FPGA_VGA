@@ -49,6 +49,27 @@ module readout( // Inputs
           // start at count=2 to skip first readout addr increment
           count <= 3'd2;
         end
+
+        // If we're in the vertical activity region, and the hsync pulse
+        // begin signal is asserted (which happens outside the horizontal
+        // activity period), then update either the readout
+        // address register (by setting it to the current value of the
+        // row begin address register) or the row begin address register
+        // (by setting it to the current value of the readout address
+        // register).
+        if ( vActive & hBeginPulse ) begin
+          if ( vCount == 4'b1111 ) begin
+            // We've reached the last pixel row in the current character row,
+            // so set the row begin address to the current readout address
+            // (in order to start the next character row)
+            rowBeginAddrReg <= readoutAddrReg;
+          end else begin
+            // The next pixel row will be part of the same character row,
+            // so set the readout address back to the current value of the
+            // row begin address register.
+            readoutAddrReg <= rowBeginAddrReg;
+          end
+        end
       end else begin
         // Readout activity is occurring
 
@@ -65,25 +86,6 @@ module readout( // Inputs
         end
       end
 
-      // If we're in the vertical activity region, and the hsync pulse
-      // begin signal is asserted, then update either the readout
-      // address register (by setting it to the current value of the
-      // row begin address register) or the row begin address register
-      // (by setting it to the current value of the readout address
-      // register).
-      if ( vActive & hBeginPulse ) begin
-        if ( vCount == 4'b1111 ) begin
-          // We've reached the last pixel row in the current character row,
-          // so set the row begin address to the current readout address
-          // (in order to start the next character row)
-          rowBeginAddrReg <= readoutAddrReg;
-        end else begin
-          // The next pixel row will be part of the same character row,
-          // so set the readout address back to the current value of the
-          // row begin address register.
-          readoutAddrReg <= rowBeginAddrReg;
-        end
-      end
     end
   end
 
