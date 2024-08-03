@@ -100,6 +100,8 @@ module icevga3( input nrst,
   // readout module and signals
 
   wire [12:0] readoutAddr;
+  wire [2:0] readoutCount;
+  wire active;
 
   readout readout_instance( // Inputs
                             .nrst( nrst ),
@@ -111,7 +113,9 @@ module icevga3( input nrst,
                             .vSync( vSync ),
                             .hBeginPulse( hBeginPulse ),
                             // Output
-                            .readoutAddr( readoutAddr ) );
+                            .readoutAddr( readoutAddr ),
+                            .readoutCount( readoutCount ),
+                            .active( active ) );
 
   // vram module and signals
 

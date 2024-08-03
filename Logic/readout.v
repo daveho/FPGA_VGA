@@ -12,16 +12,18 @@ module readout( // Inputs
                 input vSync,
                 input hBeginPulse,
                 // outputs
-                output [12:0] readoutAddr );
+                output [12:0] readoutAddr,
+                output [2:0] readoutCount,
+                output active );
 
-  // active register: 1 if readout activity is happening
-  reg active;
+  // activeReg: 1 if readout activity is happening
+  reg activeReg;
 
   // 8 cycle counter, used to time address generation.
   // The high bit is the activity "phase": 0=fetch character,
   // 1=fetch attribute. (This will be significant to the
   // pixel generator module.)
-  reg [2:0] count;
+  reg [2:0] readoutCountReg;
 
   // row begin address register
   reg [12:0] rowBeginAddrReg;
@@ -32,7 +34,7 @@ module readout( // Inputs
   always @( posedge clk ) begin
     if ( nrst == 1'b0 ) begin
       // in reset
-      active <= 1'b0;
+      activeReg <= 1'b0;
       rowBeginAddrReg <= 13'd0;
       readoutAddrReg <= 13'd0;
     end else if ( vSync == 1'b0 ) begin
@@ -41,21 +43,21 @@ module readout( // Inputs
     end else begin
       // not in reset or vsync pulse
 
-      if ( ~active ) begin
+      if ( ~activeReg ) begin
         // Readout activity currently off
 
         // start activity?
         if ( hBeginActive & vActive ) begin
           // activity starts
-          active <= 1'b1;
+          activeReg <= 1'b1;
 
-          // start at count=2 to skip first readout addr increment
-          count <= 3'd2;
+          // start at readoutCountReg=2 to skip first readout addr increment
+          readoutCountReg <= 3'd2;
         end
 
         // If we're in the vertical activity region, and the hsync pulse
         // begin signal is asserted (which happens outside the horizontal
-        // activity period, so active will be de-asserted), update either
+        // activity period, so activeReg will be de-asserted), update either
         // the readout address register (by setting it to the current value
         // of the row begin address register) or the row begin address
         // register (by setting it to the current value of the readout
@@ -76,19 +78,19 @@ module readout( // Inputs
       end else begin
         // Readout activity is occurring
 
-        // increment count
-        count <= count + 3'd1;
+        // increment readoutCountReg
+        readoutCountReg <= readoutCountReg + 3'd1;
 
-        // If count is 0 or 4, increment readout address
+        // If readoutCountReg is 0 or 4, increment readout address
         // (so that the address of a character or attribute to
-        // fetch is asserted when the count is 1 or 5.)
-        if ( count[1:0] == 2'b00 ) begin
+        // fetch is asserted when the readoutCountReg is 1 or 5.)
+        if ( readoutCountReg[1:0] == 2'b00 ) begin
           readoutAddrReg <= readoutAddrReg + 13'd1;
         end
 
         // End activity for this scanline?
         if ( hEndActive ) begin
-          active <= 1'b0;
+          activeReg <= 1'b0;
         end
       end
 
@@ -98,5 +100,9 @@ module readout( // Inputs
   // The readout address register's outputs drive the module's
   // readout address outputs
   assign readoutAddr = readoutAddrReg;
+
+  // Output readoutCount and active signals so pixgen module can use them
+  assign readoutCount = readoutCountReg;
+  assign active = activeReg;
 
 endmodule
