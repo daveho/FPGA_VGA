@@ -23,19 +23,24 @@ module pixgen( // Inputs
                output fgIntense,
                output pixel );
 
-  // Font data (ideally, will be inferred as 8 512B block RAMS,
-  // although the SPRAM would also work)
-  reg [7:0] fontData[4095:0];
-  initial begin
-    `include "init_font.vh"
-  end
-
   // character and attribute registers
   reg [7:0] charReg;
   reg [7:0] attrReg;
 
   // output shift register
   reg [7:0] shiftReg;
+
+  wire [11:0] fontRdAddr;
+  wire [7:0] fontRdData;
+
+  font font_instance( .clk( clk ),
+                      .fontRdAddr( fontRdAddr ),
+                      .fontRdData( fontRdData ) );
+
+  // The data read from the font ROM is the pattern byte addressed
+  // using the contents of the character register (high 8 bits)
+  // and the low 4 bits of the vertical count (vCount[3:0]).
+  assign fontRdAddr = { charReg[7:0], vCount[3:0] };
 
   always @( posedge clk ) begin
     if ( nrst == 1'b0 ) begin
@@ -65,7 +70,7 @@ module pixgen( // Inputs
           charReg <= readoutData;
         end else if ( readoutCount == 3'd7 ) begin
           attrReg <= readoutData;
-          shiftReg <= fontData[ { charReg, vCount } ];
+          shiftReg <= fontRdData;
         end
 
         if ( readoutCount != 3'd7 ) begin
@@ -79,7 +84,7 @@ module pixgen( // Inputs
           charReg <= readoutData;
         end else if ( readoutCount == 3'd7 ) begin
           attrReg <= readoutData;
-          shiftReg <= fontData[ { charReg, vCount } ];
+          shiftReg <= fontRdData;
         end
       end else if ( ~nVis ) begin
         // visibility but no readout activity: only shift output shift register
