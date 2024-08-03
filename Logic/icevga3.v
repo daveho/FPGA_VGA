@@ -136,6 +136,28 @@ module icevga3( input nrst,
                       .hostRdData( hostRdData ),
                       .displayRdData( displayRdData ) );
 
+  // pixel generator module and signals
+
+  pixgen pixgen_instance(  // Inputs
+                          .nrst( nrst ),
+                          .clk( clk ),
+                          .readoutData( displayRdData ), // read data from display side of VRAM
+                          .vCount( vCount[3:0] ),
+                          .nVis( nVis ),
+                          .readoutCount( readoutCount ),
+                          .active( active ),
+                          // Outputs
+                          .bgRed( bgRed ),
+                          .bgGreen( bgGreen ),
+                          .bgBlue( bgBlue ),
+                          .bgIntense( bgIntense ),
+                          .fgRed( fgRed ),
+                          .fgGreen( fgGreen ),
+                          .fgBlue( fgBlue ),
+                          .fgIntense( fgIntense ),
+                          .pixel( pixel ) );
+
+/*
   // for now: just generate a changing solid foreground, using the
   // vEndPulse signal to update 
   reg [9:0] count;
@@ -167,6 +189,7 @@ module icevga3( input nrst,
   assign fgGreen = count[7];
   assign fgBlue = count[8];
   assign fgIntense = count[9];
+*/
 
   // for now, don't do anything with the host side of the VRAM
   assign hostAddr = 13'd0;
