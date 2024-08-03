@@ -1,6 +1,8 @@
 // Third attempt at implementing a VGA text mode display
 // using an ICE40 FPGA
 
+`default_nettype none
+
 module icevga3( input nrst,
                 input ext_osc,
                 output redOut,
@@ -47,7 +49,7 @@ module icevga3( input nrst,
 
   // sync module and signals
 
-  wire hSync, vSync, hVis, vVis, nVis;
+  wire hSync, vSync, hVis, vVis, nVis, vActive;
 
   sync sync_instance( .nrst( nrst) ,
                       .clk( clk ),
@@ -65,7 +67,8 @@ module icevga3( input nrst,
                       .vSync( vSync ),
                       .hVis( hVis ),
                       .vVis( vVis ),
-                      .nVis( nVis ) );
+                      .nVis( nVis ),
+                      .vActive( vActive ) );
 
   // vga_output module and signals
 
@@ -93,6 +96,41 @@ module icevga3( input nrst,
                                   .intenseOut( intenseOut ),
                                   .hSyncOut( hSyncOut ),
                                   .vSyncOut( vSyncOut ) );
+
+  // readout module and signals
+
+  wire [12:0] readoutAddr;
+
+  readout readout_instance( // Inputs
+                            .nrst( nrst ),
+                            .clk( clk ),
+                            .vActive( vActive ),
+                            .hBeginActive( hBeginActive ),
+                            .hEndActive( hEndActive ),
+                            .vCount( vCount[3:0] ), // only need low 4 bits of vCount
+                            .vSync( vSync ),
+                            .hBeginPulse( hBeginPulse ),
+                            // Output
+                            .readoutAddr( readoutAddr ) );
+
+  // vram module and signals
+
+  wire [12:0] hostAddr;
+  wire [7:0] hostWrData;
+  wire hostSelect, hostRd;
+  wire [7:0] hostRdData;
+  wire [7:0] displayRdData;
+
+  vram vram_instance( // Inputs
+                      .clk( clk ),
+                      .hostAddr( hostAddr ),
+                      .hostWrData( hostWrData ),
+                      .hostSelect( hostSelect ),
+                      .hostRd( hostRd ),
+                      .displayAddr( readoutAddr ), // displayAddr=readoutAddr
+                      // Outputs
+                      .hostRdData( hostRdData ),
+                      .displayRdData( displayRdData ) );
 
   // for now: just generate a changing solid foreground, using the
   // vEndPulse signal to update 
@@ -125,5 +163,10 @@ module icevga3( input nrst,
   assign fgGreen = count[7];
   assign fgBlue = count[8];
   assign fgIntense = count[9];
+
+  // for now, don't do anything with the host side of the VRAM
+  assign hostAddr = 13'd0;
+  assign hostSelect = 1'b0;
+  assign hostRd = 1'b1;
 
 endmodule
