@@ -23,12 +23,11 @@ module vram( // Inputs
              );
 
   // video memory
-  reg [7:0] vramData[12:0];
+  reg [7:0] vramData[8192:0];
 
   // initialize first 4800 bytes of VRAM with a picture of Ingo
   initial begin
-    //`include "init_vram.vh"
-    vramData[13'd0] = 8'd31;
+    `include "init_vram.vh"
   end
 
   // registers for data read from video memory
