@@ -8,3 +8,7 @@
 /*.vcd
 /.sconsign.dblite
 /abc.history
+/*.chp
+/*.fus
+/*.jed
+/*.pin
