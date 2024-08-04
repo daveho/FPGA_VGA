@@ -386,6 +386,14 @@
     [
       "8cdb8723-4427-4419-9f98-cd3a25f25df9",
       "Root"
+    ],
+    [
+      "1421ecff-bb29-4f0a-a5b2-2bd4966b2d6a",
+      "HostInterface"
+    ],
+    [
+      "59c4bd97-e8fa-45c0-899c-2c745a13d8ee",
+      "DACAndOutput"
     ]
   ],
   "text_variables": {}
