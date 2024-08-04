@@ -1,5 +1,7 @@
 # FPGA VGA text display
 
+![Photo of FPGA displaying a cat picture rendered with text characters](img/ingo_test.jpg)
+
 This is a companion project to the [HW\_VGA](https://github.com/daveho/HW_VGA) project.
 Its goal is to implement an 80x30 text display using 640x480 VGA, using more or less
 the same approach as the HW\_VGA project, but using a
@@ -7,10 +9,11 @@ the same approach as the HW\_VGA project, but using a
 on an [Upduino 3.1](https://tinyvision.ai/products/upduino-v3-1) (or 3.0) board
 rather than discrete logic, GALs, and dual port static RAM.
 
-The current status is that I can produce a valid 640x480 VGA signal displaying
-a solid color, and I've written some test benches, including one for the readout
-module (which generates the addresses of characters and attributes to fetch from
-video memory.)
+As of early August 2024, the design generates a valid 640x480 VGA signal,
+implements video RAM and font ROM using block RAM, and correctly displays
+a test image. Test benches for the sync logic and character/attribute fetch
+logic are implemented. All that remains is to implement a host interface so
+the host system can write data to the video memory.
 
 The [Schematic](Schematic) directory has a KiCad schematic, and the
 [Logic](Logic) directory has the Verilog code for the FPGA. I use
