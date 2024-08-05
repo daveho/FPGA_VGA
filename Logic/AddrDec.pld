@@ -4,7 +4,7 @@ AddrDec
 A5   A6      A7      A8   A9   A10  A11  A12  A13  A14  A15  GND
 A0   nVRAMEn nBankEn NC   NC   NC   NC   A4   A3   A2   A1   VCC
 
-; VRAM is enabled if the address is in the window $8000-$8FFF
+; VRAM is enabled if the address is in the window $8800-$8FFF
 /nVRAMEn = A15 * /A14 * /A13 * /A12 * A11 
 
 ; Bank register is enabled if the address is, specifically, $80E0.
