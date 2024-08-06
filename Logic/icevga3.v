@@ -3,8 +3,18 @@
 
 `default_nettype none
 
-module icevga3( input nrst,
+module icevga3( // clock and reset
+                input nrst,
                 input ext_osc,
+                // host interface
+                input [10:0] hostBusAddr,
+                inout [7:0] hostBusData,
+                input nHostRMEM,
+                input nHostWMEM,
+                input nHostVRAMEn,
+                input nHostBankRegEn,
+                output hostBusDir,
+                // outputs to monitor
                 output redOut,
                 output greenOut,
                 output blueOut,
@@ -157,43 +167,22 @@ module icevga3( input nrst,
                           .fgIntense( fgIntense ),
                           .pixel( pixel ) );
 
-/*
-  // for now: just generate a changing solid foreground, using the
-  // vEndPulse signal to update 
-  reg [9:0] count;
-
-  always @( posedge clk ) begin
-    if ( nrst == 1'b0 ) begin
-      // in reset, clear counter
-      count <= 10'd0;
-    end else begin
-      // increment counter when vEndPulse is asserted
-      if ( vEndPulse ) begin
-        count <= count + 10'd1;
-      end
-    end
-  end
-
-  // background color won't be used
-  assign bgRed = 1'b0;
-  assign bgGreen = 1'b0;
-  assign bgBlue = 1'b0;
-  assign bgIntense = 1'b0;
-
-  // output foreground color always
-  assign pixel = 1'b1;
-
-  // use the high 4 bits of the counter to generate
-  // the foreground color signals
-  assign fgRed = count[6];
-  assign fgGreen = count[7];
-  assign fgBlue = count[8];
-  assign fgIntense = count[9];
-*/
-
   // for now, don't do anything with the host side of the VRAM
   assign hostAddr = 13'd0;
   assign hostSelect = 1'b0;
   assign hostRd = 1'b1;
+
+  // Host bus data direction control.
+
+  // host wants to read from display controller (nHostRMEM asserted)
+  localparam BUS_HOST_READ = 1'b0;
+
+  // host wants to write to display controller (nHostWMEM asserted)
+  localparam BUS_HOST_WRITE = 1'b1;
+
+  // for now, host interface is disable (hostBusData set to hi-Z,
+  // hostBusDir set to BUS_HOST_WRITE)
+  assign hostBusData = "xxxxxxxx";
+  assign hostBusDir = BUS_HOST_WRITE;
 
 endmodule
