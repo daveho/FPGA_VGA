@@ -132,17 +132,16 @@ module icevga3( // clock and reset
   wire [12:0] hostWrAddr;
   wire [7:0] hostWrData;
   wire hostWr;
-  wire [7:0] hostRdData;
   wire [7:0] displayRdData;
 
   vram vram_instance( // Inputs
                       .clk( clk ),
-                      .hostWrAddr( hostWrAddr ),
-                      .hostWrData( hostWrData ),
-                      .hostWr( hostWr ),
-                      .displayAddr( readoutAddr ), // displayAddr=readoutAddr
+                      .vramWrAddr( hostWrAddr ),
+                      .vramWrData( hostWrData ),
+                      .vramWr( hostWr ),
+                      .vramRdAddr( readoutAddr ), // displayAddr=readoutAddr
                       // Outputs
-                      .displayRdData( displayRdData ) );
+                      .vramRdData( displayRdData ) );
 
   // pixel generator module
 
