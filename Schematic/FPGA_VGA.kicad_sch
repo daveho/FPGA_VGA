@@ -4650,7 +4650,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 97.79) (xy 187.96 97.79)
+			(xy 163.83 97.79) (xy 187.96 97.79)
 		)
 		(stroke
 			(width 0)
@@ -4770,7 +4770,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 95.25) (xy 187.96 95.25)
+			(xy 163.83 95.25) (xy 187.96 95.25)
 		)
 		(stroke
 			(width 0)
@@ -6818,7 +6818,7 @@
 		(uuid "601ebfd2-e2a6-43ba-8d46-7d40541e62e2")
 	)
 	(label "HSync"
-		(at 219.71 160.02 0)
+		(at 219.71 157.48 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7918,7 +7918,7 @@
 		(uuid "fcb1b3e4-1d1c-40d0-8935-d9017e73fe96")
 	)
 	(label "VSync"
-		(at 219.71 157.48 0)
+		(at 219.71 160.02 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8080,7 +8080,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 177.8 97.79 270)
+		(at 163.83 97.79 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8089,7 +8089,7 @@
 		(fields_autoplaced yes)
 		(uuid "2387e830-ac5b-4f2c-961c-2ae4e01f3c21")
 		(property "Reference" "#PWR03"
-			(at 171.45 97.79 0)
+			(at 157.48 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8098,7 +8098,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 173.99 97.7899 90)
+			(at 160.02 97.7899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8107,7 +8107,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 177.8 97.79 0)
+			(at 163.83 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8116,7 +8116,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 97.79 0)
+			(at 163.83 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8125,7 +8125,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 177.8 97.79 0)
+			(at 163.83 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8213,7 +8213,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 177.8 95.25 90)
+		(at 163.83 95.25 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8222,7 +8222,7 @@
 		(fields_autoplaced yes)
 		(uuid "4fd1d919-d277-43e8-a198-cf0162718b88")
 		(property "Reference" "#PWR02"
-			(at 181.61 95.25 0)
+			(at 167.64 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8231,7 +8231,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 173.99 95.2499 90)
+			(at 160.02 95.2499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8240,7 +8240,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 177.8 95.25 0)
+			(at 163.83 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8249,7 +8249,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 95.25 0)
+			(at 163.83 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8258,7 +8258,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 177.8 95.25 0)
+			(at 163.83 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
