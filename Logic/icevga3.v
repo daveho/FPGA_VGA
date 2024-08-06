@@ -129,21 +129,19 @@ module icevga3( // clock and reset
 
   // vram module and signals
 
-  wire [12:0] hostAddr;
+  wire [12:0] hostWrAddr;
   wire [7:0] hostWrData;
-  wire hostSelect, hostRd;
+  wire hostWr;
   wire [7:0] hostRdData;
   wire [7:0] displayRdData;
 
   vram vram_instance( // Inputs
                       .clk( clk ),
-                      .hostAddr( hostAddr ),
+                      .hostWrAddr( hostWrAddr ),
                       .hostWrData( hostWrData ),
-                      .hostSelect( hostSelect ),
-                      .hostRd( hostRd ),
+                      .hostWr( hostWr ),
                       .displayAddr( readoutAddr ), // displayAddr=readoutAddr
                       // Outputs
-                      .hostRdData( hostRdData ),
                       .displayRdData( displayRdData ) );
 
   // pixel generator module
@@ -178,11 +176,9 @@ module icevga3( // clock and reset
                                           .nHostVRAMEn( nHostVRAMEn ),
                                           .nHostBankRegEn( nHostBankRegEn ),
                                           .hostBusDir( hostBusDir ),
-                                          .hostRdData( hostRdData ),
-                                          .hostSelect( hostSelect ),
-                                          .hostRd( hostRd ),
-                                          .hostAddr( hostAddr ),
-                                          .hostWrData( hostWrData ) );
+                                          .hostWrAddr( hostWrAddr ),
+                                          .hostWrData( hostWrData ),
+                                          .hostWr( hostWr ) );
 
 /*
   assign hostSelect = 1'b0;

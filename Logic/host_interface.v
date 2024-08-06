@@ -14,11 +14,9 @@ module host_interface( input nrst,
                        // host data bus (1=host writes, 0=host reads)
                        output hostBusDir,
                        // interface to display side of VRAM
-                       input [7:0] hostRdData,
-                       output hostSelect,
-                       output hostRd,
-                       output [12:0] hostAddr,
-                       output [7:0] hostWrData );
+                       output [12:0] hostWrAddr,
+                       output [7:0] hostWrData,
+                       output hostWr);
 
   // data transfer directions
   localparam DIR_HOST_TO_DISPLAY = 1'b1; // the default, and when host is writing data to VRAM or bank reg
@@ -28,18 +26,25 @@ module host_interface( input nrst,
   // (0=output data to host data bus, 1=port is high impedence)
   reg nOutputToHost;
 
+/*
   // if we're outputting data to the host data bus, it's the data
   // read from the VRAM, otherwise the port is set to high impedence
   assign hostBusData = (nOutputToHost == DIR_DISPLAY_TO_HOST) ? hostRdData : 8'bZZZZZZZZ;
+*/
+  assign hostBusDir = 8'bZZZZZZZZ;
 
   // control the data direction of the 74VLC245 transceiver interfacing
   // the FPGA to the host data bus
   assign hostBusDir = nOutputToHost;
 
+/*
   // registers to control outputs to hostSelect and hostRd signals
   reg hostSelectReg, hostRdReg;
   assign hostSelect = hostSelectReg;
   assign hostRd = hostRdReg;
+*/
+  reg hostWrReg;
+  assign hostWr = hostWrReg;
 
   // Bank register. Unlike the HW_VGA implementation, this only selects
   // the VRAM bank, and does not select a font. (Future: if we move the
@@ -49,7 +54,10 @@ module host_interface( input nrst,
   // data read from or written to VRAM is addressed by
   // the bank register (high 2 bits) and the hostBusAddr
   // (low 11 bits)
+/*
   assign hostAddr = { bankReg[1:0], hostBusAddr };
+*/
+  assign hostWrAddr = { bankReg[1:0], hostBusAddr };
 
   // when data is written to the VRAM, it comes from hostBusData
   assign hostWrData = hostBusData;
@@ -60,8 +68,11 @@ module host_interface( input nrst,
       // in reset
       nOutputToHost = DIR_DISPLAY_TO_HOST; // don't output to host bus
       bankReg <= 8'd0;
+/*
       hostSelectReg <= 1'b0;
       hostRdReg <= 1'b1;
+*/
+      hostWrReg <= 1'b0;
     end else begin
       // not in reset
 
@@ -72,9 +83,12 @@ module host_interface( input nrst,
         // and tell the VRAM that we want to read; data
         // will appear on the host data bus on the next
         // clock cycle
+/*
         nOutputToHost <= DIR_DISPLAY_TO_HOST;
         hostSelectReg <= 1'b1;
         hostRdReg <= 1'b1; // 1=read data from VRAM
+*/
+        // FIXME: this can't be supported yet
       end else if ( nHostWMEM == 1'b0 & nHostBankRegEn == 1'b0 ) begin
         // host wants to write data to the bank register
         nOutputToHost <= DIR_HOST_TO_DISPLAY;
@@ -85,15 +99,17 @@ module host_interface( input nrst,
         // we should need to do is set the bus direction
         // and tell the VRAM we want to write
         nOutputToHost <= DIR_HOST_TO_DISPLAY;
-        hostSelectReg <= 1'b1;
-        hostRdReg <= 1'b0; // 0=write data to VRAM
+        hostWrReg <= 1'b1;
       end else begin
         // host is neither reading nor writing:
         // make sure bus direction is DIR_HOST_TO_DISPLAY
         // and that the VRAM is not selected
         nOutputToHost <= DIR_HOST_TO_DISPLAY;
+/*
         hostSelectReg <= 1'b0;
         hostRdReg <= 1'b1;
+*/
+        hostWrReg <= 1'b0;
       end
 
     end

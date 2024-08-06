@@ -1,24 +1,23 @@
 // VRAM module
 
-// The host interface will be able to read and write, and the display
-// controller will just read.
-
 // This is intended to be inferred as 16 512B dual port block RAMs.
+
+// ICE40 block RAMS aren't true dual port memory. Rather, there
+// are independent read and write ports. So, the memory fetch
+// logic will need to handle both character and attribute
+// data fetches (for pixel generation) and also reads from
+// the host interface.
 
 module vram( // Inputs
              input clk,
 
-             // Host-side inputs
-             input [12:0] hostAddr,      // host-side address
+             // Write interface
+             input [12:0] hostWrAddr,    // host-side write address
              input [7:0] hostWrData,     // data to write
-             input hostSelect,           // 1=selected, 0=not selected
-             input hostRd,               // 1=read, 0=write
+             input hostWr,               // 1=write to VRAM, 0=don't write
 
-             // Display controller-side inputs
+             // Read interface
              input [12:0] displayAddr,   // display-side address
-
-             // Outputs
-             output [7:0] hostRdData,    // data read from host side
              output [7:0] displayRdData  // data read from display side
              );
 
@@ -36,16 +35,9 @@ module vram( // Inputs
 
   always @( posedge clk ) begin
 
-    if ( hostSelect ) begin
-      // VRAM selected from host side
-
-      if ( hostRd ) begin
-        // read data from host side
-        hostRdDataReg <= 8'hFF; // FIXME: invalid data for now
-      end else begin
-        // write data from host  side
-        vramData[hostAddr] <= hostWrData;
-      end
+    if ( hostWrData ) begin
+      // write data from host  side
+      vramData[hostWrAddr] <= hostWrData;
     end
 
     // on the display side, we just output whatever data
@@ -55,7 +47,6 @@ module vram( // Inputs
   end
 
   // drive outputs from read data registers
-  assign hostRdData = hostRdDataReg;
   assign displayRdData = displayRdDataReg;
 
 endmodule
