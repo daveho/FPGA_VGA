@@ -5,8 +5,8 @@
 // ICE40 block RAMS aren't true dual port memory. Rather, there
 // are independent read and write ports. So, the memory fetch
 // logic will need to handle both character and attribute
-// data fetches (for pixel generation) and also reads from
-// the host interface.
+// data fetches (for pixel generation) and also reads by
+// the host interface using the single read port.
 
 module vram( // Inputs
              input clk,

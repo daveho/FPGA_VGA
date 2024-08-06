@@ -14,8 +14,8 @@ module host_interface( input nrst,
                        // host data bus (1=host writes, 0=host reads)
                        output hostBusDir,
                        // interface to display side of VRAM
-                       output [12:0] hostWrAddr,
-                       output [7:0] hostWrData,
+                       output [12:0] hostWrAddr, // the VRAM address the host wants to write
+                       output [7:0] hostWrData,  // the data the host wants to write to VRAM
                        output hostWr);
 
   // data transfer directions
@@ -31,7 +31,7 @@ module host_interface( input nrst,
   // read from the VRAM, otherwise the port is set to high impedence
   assign hostBusData = (nOutputToHost == DIR_DISPLAY_TO_HOST) ? hostRdData : 8'bZZZZZZZZ;
 */
-  assign hostBusDir = 8'bZZZZZZZZ;
+  assign hostBusData = 8'bZZZZZZZZ;
 
   // control the data direction of the 74VLC245 transceiver interfacing
   // the FPGA to the host data bus

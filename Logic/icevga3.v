@@ -130,25 +130,25 @@ module icevga3( // clock and reset
   // vram module and signals
 
   wire [12:0] hostWrAddr;
-  wire [7:0] hostWrData;
+  wire [7:0] vramWrData;
   wire hostWr;
-  wire [7:0] displayRdData;
+  wire [7:0] vramRdData;
 
   vram vram_instance( // Inputs
                       .clk( clk ),
                       .vramWrAddr( hostWrAddr ),
-                      .vramWrData( hostWrData ),
+                      .vramWrData( vramWrData ),
                       .vramWr( hostWr ),
                       .vramRdAddr( readoutAddr ), // displayAddr=readoutAddr
                       // Outputs
-                      .vramRdData( displayRdData ) );
+                      .vramRdData( vramRdData ) );
 
   // pixel generator module
 
   pixgen pixgen_instance(  // Inputs
                           .nrst( nrst ),
                           .clk( clk ),
-                          .readoutData( displayRdData ), // read data from display side of VRAM
+                          .vramRdData( vramRdData ), // read data from display side of VRAM
                           .vCount( vCount[3:0] ),
                           .nVis( nVis ),
                           .readoutCount( readoutCount ),
@@ -176,7 +176,7 @@ module icevga3( // clock and reset
                                           .nHostBankRegEn( nHostBankRegEn ),
                                           .hostBusDir( hostBusDir ),
                                           .hostWrAddr( hostWrAddr ),
-                                          .hostWrData( hostWrData ),
+                                          .hostWrData( vramWrData ),
                                           .hostWr( hostWr ) );
 
 /*
