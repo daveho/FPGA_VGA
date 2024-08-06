@@ -1,0 +1,30 @@
+New approach to memory fetch
+
+Issue: block RAM only has one read port, so a single process will
+need to handle fetching character/attribute data for display and
+also handle requests to read VRAM data from the host
+
+Idea: consolidate readout and pixgen logic, and incorporate host
+read requests. This seems too cumbersome with readout and
+pixgen separated.
+
+Basic idea: we really only need two cycles to
+
+  - fetch character byte from VRAM
+  - fetch attribute from VRAM, clock it into the attribute register,
+    and clock the pattern byte (fetched from font ROM) into the
+    output shift register
+
+These two cycles can happen at the end of the 8-cycle readout
+count cadence.
+
+Idea: rather than futzing with the activity start hcount and
+initial readout counts to avoid a supurious initial readout address
+increment, maybe special-case this in logic?
+
+  if ( readoutCount == 3'd6 & ~firstActivity8Cycle )
+    readoutAddress <= readoutAddress + 13'd1;
+
+So, horizontal activity starts at hcount=791 (rather than 793.)
+
+

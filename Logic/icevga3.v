@@ -107,6 +107,7 @@ module icevga3( // clock and reset
                                   .hSyncOut( hSyncOut ),
                                   .vSyncOut( vSyncOut ) );
 
+/*
   // readout module and signals
 
   wire [12:0] readoutAddr;
@@ -178,6 +179,7 @@ module icevga3( // clock and reset
                                           .hostWrAddr( hostWrAddr ),
                                           .hostWrData( vramWrData ),
                                           .hostWr( hostWr ) );
+*/
 
 /*
   assign hostSelect = 1'b0;
