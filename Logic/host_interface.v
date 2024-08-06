@@ -1,6 +1,7 @@
 // Host interface (allowing the host to read and write data)
 
-module host_interface( input clk,
+module host_interface( input nrst,
+                       input clk,
                        // host data/addr busses and control signals
                        input [10:0] hostBusAddr,
                        inout [7:0] hostBusData,
@@ -19,22 +20,84 @@ module host_interface( input clk,
                        output [12:0] hostAddr,
                        output [7:0] hostWrData );
 
-  // for now, don't do anything with the host side of the VRAM
-  assign hostAddr = 13'd0;
-  assign hostSelect = 1'b0;
-  assign hostRd = 1'b1;
+  // data transfer directions
+  localparam DIR_HOST_TO_DISPLAY = 1'b1; // the default, and when host is writing data to VRAM or bank reg
+  localparam DIR_DISPLAY_TO_HOST = 1'b0; // only when the host is explicitly trying to read VRAM
 
-  // Host bus data direction control.
+  // register to determine whether data is output to the host data bus
+  // (0=output data to host data bus, 1=port is high impedence)
+  reg nOutputToHost;
 
-  // host wants to read from display controller (nHostRMEM asserted)
-  localparam BUS_HOST_READ = 1'b0;
+  // if we're outputting data to the host data bus, it's the data
+  // read from the VRAM, otherwise the port is set to high impedence
+  assign hostBusData = (nOutputToHost == DIR_DISPLAY_TO_HOST) ? hostRdData : 8'bZZZZZZZZ;
 
-  // host wants to write to display controller (nHostWMEM asserted)
-  localparam BUS_HOST_WRITE = 1'b1;
+  // control the data direction of the 74VLC245 transceiver interfacing
+  // the FPGA to the host data bus
+  assign hostBusDir = nOutputToHost;
 
-  // for now, host interface is disable (hostBusData set to hi-Z,
-  // hostBusDir set to BUS_HOST_WRITE)
-  assign hostBusData = "xxxxxxxx";
-  assign hostBusDir = BUS_HOST_WRITE;
+  // registers to control outputs to hostSelect and hostRd signals
+  reg hostSelectReg, hostRdReg;
+  assign hostSelect = hostSelectReg;
+  assign hostRd = hostRdReg;
+
+  // Bank register. Unlike the HW_VGA implementation, this only selects
+  // the VRAM bank, and does not select a font. (Future: if we move the
+  // font data to the SPRAM, multiple fonts would be possible.)
+  reg [7:0] bankReg;
+
+  // data read from or written to VRAM is addressed by
+  // the bank register (high 2 bits) and the hostBusAddr
+  // (low 11 bits)
+  assign hostAddr = { bankReg[1:0], hostBusAddr };
+
+  // when data is written to the VRAM, it comes from hostBusData
+  assign hostWrData = hostBusData;
+
+  always @( posedge clk ) begin
+
+    if ( nrst == 1'b0 ) begin
+      // in reset
+      nOutputToHost = DIR_DISPLAY_TO_HOST; // don't output to host bus
+      bankReg <= 8'd0;
+      hostSelectReg <= 1'b0;
+      hostRdReg <= 1'b1;
+    end else begin
+      // not in reset
+
+      if ( nHostRMEM == 1'b0 & nHostVRAMEn == 1'b0 ) begin
+        // host wants to read data from VRAM;
+        // address should be valid, so all we
+        // should need to do is set the bus direction
+        // and tell the VRAM that we want to read; data
+        // will appear on the host data bus on the next
+        // clock cycle
+        nOutputToHost <= DIR_DISPLAY_TO_HOST;
+        hostSelectReg <= 1'b1;
+        hostRdReg <= 1'b1; // 1=read data from VRAM
+      end else if ( nHostWMEM == 1'b0 & nHostBankRegEn == 1'b0 ) begin
+        // host wants to write data to the bank register
+        nOutputToHost <= DIR_HOST_TO_DISPLAY;
+        bankReg <= hostBusData;
+      end else if ( nHostWMEM == 1'b0 & nHostVRAMEn == 1'b0 ) begin
+        // host wants to write data to VRAM;
+        // address and host data should be valid, so all
+        // we should need to do is set the bus direction
+        // and tell the VRAM we want to write
+        nOutputToHost <= DIR_HOST_TO_DISPLAY;
+        hostSelectReg <= 1'b1;
+        hostRdReg <= 1'b0; // 0=write data to VRAM
+      end else begin
+        // host is neither reading nor writing:
+        // make sure bus direction is DIR_HOST_TO_DISPLAY
+        // and that the VRAM is not selected
+        nOutputToHost <= DIR_HOST_TO_DISPLAY;
+        hostSelectReg <= 1'b0;
+        hostRdReg <= 1'b1;
+      end
+
+    end
+
+  end
 
 endmodule

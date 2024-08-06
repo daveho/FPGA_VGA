@@ -32,4 +32,4 @@ test_readout : readout_tb.vvp
 	$(TOOLS)/vvp $^
 
 clean :
-	rm -f *.vvp *.vcd
+	rm -f *.vvp *.vcd hardware.*

@@ -169,7 +169,8 @@ module icevga3( // clock and reset
 
   // host_interface module
 
-  host_interface host_interface_instance( .clk(clk),
+  host_interface host_interface_instance( .nrst( nrst ),
+                                          .clk( clk ),
                                           .hostBusAddr( hostBusAddr ),
                                           .hostBusData( hostBusData ),
                                           .nHostRMEM( nHostRMEM ),
