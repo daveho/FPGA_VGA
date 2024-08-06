@@ -4340,16 +4340,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 64.77) (xy 158.75 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0967c599-c070-44d3-b016-324c18ba5e6f")
-	)
-	(wire
-		(pts
 			(xy 50.8 55.88) (xy 64.77 55.88)
 		)
 		(stroke
@@ -4357,6 +4347,16 @@
 			(type default)
 		)
 		(uuid "0a030ab3-cc2d-4bce-a96d-b3d8ca7a4b91")
+	)
+	(wire
+		(pts
+			(xy 138.43 82.55) (xy 158.75 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d43d323-c12a-4225-bdd0-f9bdf6961df3")
 	)
 	(wire
 		(pts
@@ -4417,6 +4417,16 @@
 			(type default)
 		)
 		(uuid "17bc93ad-b29a-43fb-98a7-69a660d3644c")
+	)
+	(wire
+		(pts
+			(xy 138.43 77.47) (xy 158.75 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1806fd0d-b90a-4602-bfcd-91de085a0af8")
 	)
 	(wire
 		(pts
@@ -4500,16 +4510,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 80.01) (xy 158.75 80.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "22432b51-be09-4514-9cef-035ba640b7b4")
-	)
-	(wire
-		(pts
 			(xy 233.68 57.15) (xy 223.52 57.15)
 		)
 		(stroke
@@ -4560,6 +4560,16 @@
 	)
 	(wire
 		(pts
+			(xy 138.43 60.96) (xy 158.75 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d368cd3-4bf4-40f5-9037-daeaa7b1fa44")
+	)
+	(wire
+		(pts
 			(xy 223.52 46.99) (xy 233.68 46.99)
 		)
 		(stroke
@@ -4587,6 +4597,16 @@
 			(type default)
 		)
 		(uuid "2fd36e89-3b2b-4985-b44a-bd68efef2061")
+	)
+	(wire
+		(pts
+			(xy 138.43 90.17) (xy 158.75 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30010d64-43c7-482d-a7db-6159a0cf9a16")
 	)
 	(wire
 		(pts
@@ -4670,16 +4690,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 74.93) (xy 158.75 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "37d15a03-681e-4c6a-a26f-d84ec32350ae")
-	)
-	(wire
-		(pts
 			(xy 50.8 63.5) (xy 64.77 63.5)
 		)
 		(stroke
@@ -4690,13 +4700,13 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 72.39) (xy 158.75 72.39)
+			(xy 138.43 80.01) (xy 158.75 80.01)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "392bdb98-4074-48f0-a46f-e77442884874")
+		(uuid "3ad883ec-0dc3-46ae-a532-97ea3a6e641f")
 	)
 	(wire
 		(pts
@@ -4720,6 +4730,16 @@
 	)
 	(wire
 		(pts
+			(xy 138.43 67.31) (xy 158.75 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c04d250-6a10-4359-8a21-dd36a02f9cca")
+	)
+	(wire
+		(pts
 			(xy 88.9 87.63) (xy 102.87 87.63)
 		)
 		(stroke
@@ -4727,6 +4747,16 @@
 			(type default)
 		)
 		(uuid "3cc6eb6b-7dc4-4366-a375-c75bc6d44772")
+	)
+	(wire
+		(pts
+			(xy 138.43 43.18) (xy 158.75 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3eaa90e5-0ea0-4ff5-9e8e-637c4f9e6653")
 	)
 	(wire
 		(pts
@@ -4820,13 +4850,13 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 82.55) (xy 158.75 82.55)
+			(xy 138.43 48.26) (xy 158.75 48.26)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4489261b-2afa-4a56-8037-d7dd5a2fa2bc")
+		(uuid "43067c97-c79b-4ef4-b6fa-2e605284fc38")
 	)
 	(wire
 		(pts
@@ -4910,16 +4940,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 58.42) (xy 158.75 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c6eb1ea-970d-4b8c-9cd1-02139a8bf094")
-	)
-	(wire
-		(pts
 			(xy 229.87 105.41) (xy 252.73 105.41)
 		)
 		(stroke
@@ -5000,16 +5020,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 67.31) (xy 158.75 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "59744306-5ea0-451c-9b61-7610ba6b90df")
-	)
-	(wire
-		(pts
 			(xy 24.13 99.06) (xy 38.1 99.06)
 		)
 		(stroke
@@ -5080,16 +5090,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 50.8) (xy 158.75 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "63ce7383-afdf-401b-a939-f8f71c0fb245")
-	)
-	(wire
-		(pts
 			(xy 138.43 34.29) (xy 158.75 34.29)
 		)
 		(stroke
@@ -5100,13 +5100,13 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 53.34) (xy 158.75 53.34)
+			(xy 138.43 74.93) (xy 158.75 74.93)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "659105a6-df10-42da-98e3-30c4e1583900")
+		(uuid "6ab8772b-2497-4cdc-a546-3cdc7672d197")
 	)
 	(wire
 		(pts
@@ -5150,26 +5150,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 87.63) (xy 158.75 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "735953bf-05fb-4416-8619-797795af0ef8")
-	)
-	(wire
-		(pts
-			(xy 138.43 85.09) (xy 158.75 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "76032f9c-feca-4372-ab0b-b12eb894f9e6")
-	)
-	(wire
-		(pts
 			(xy 229.87 102.87) (xy 252.73 102.87)
 		)
 		(stroke
@@ -5210,6 +5190,16 @@
 	)
 	(wire
 		(pts
+			(xy 138.43 85.09) (xy 158.75 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b960d60-6443-413e-be5d-3db067008f2e")
+	)
+	(wire
+		(pts
 			(xy 24.13 76.2) (xy 38.1 76.2)
 		)
 		(stroke
@@ -5247,6 +5237,16 @@
 			(type default)
 		)
 		(uuid "821a55f5-ab7c-409a-9173-4d715c330f95")
+	)
+	(wire
+		(pts
+			(xy 138.43 45.72) (xy 158.75 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83588b0e-2a00-4628-9e67-d86739ef42b9")
 	)
 	(wire
 		(pts
@@ -5300,13 +5300,13 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 69.85) (xy 158.75 69.85)
+			(xy 138.43 55.88) (xy 158.75 55.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "89d07dab-6f9c-42e8-8892-d2cdec7880bd")
+		(uuid "8a348b89-9873-4bd7-b2f8-4c1fbf4b7b1c")
 	)
 	(wire
 		(pts
@@ -5327,6 +5327,26 @@
 			(type default)
 		)
 		(uuid "8c6719f1-85cf-4e06-b040-5ac1ed4956c0")
+	)
+	(wire
+		(pts
+			(xy 138.43 72.39) (xy 158.75 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8dc440a2-c5d9-4749-aa4a-24b32f32f879")
+	)
+	(wire
+		(pts
+			(xy 138.43 58.42) (xy 158.75 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e0e2902-c31b-4ac3-a93f-d143d33065f4")
 	)
 	(wire
 		(pts
@@ -5540,6 +5560,16 @@
 	)
 	(wire
 		(pts
+			(xy 138.43 53.34) (xy 158.75 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8d8d81b-8266-4630-a44d-747e5561ef5b")
+	)
+	(wire
+		(pts
 			(xy 88.9 58.42) (xy 102.87 58.42)
 		)
 		(stroke
@@ -5730,6 +5760,16 @@
 	)
 	(wire
 		(pts
+			(xy 138.43 50.8) (xy 158.75 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf9f06e9-6881-4589-b69b-feb07eed10bd")
+	)
+	(wire
+		(pts
 			(xy 231.14 22.86) (xy 231.14 25.4)
 		)
 		(stroke
@@ -5810,16 +5850,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 60.96) (xy 158.75 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc27b820-9e1c-4798-985c-1e41ff5bb76c")
-	)
-	(wire
-		(pts
 			(xy 88.9 102.87) (xy 102.87 102.87)
 		)
 		(stroke
@@ -5847,26 +5877,6 @@
 			(type default)
 		)
 		(uuid "cd0b8f4d-4cd0-40bb-adf4-d29d4024cbd3")
-	)
-	(wire
-		(pts
-			(xy 138.43 45.72) (xy 158.75 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cd2d04d4-ecc9-4343-af0a-9882d17e2f44")
-	)
-	(wire
-		(pts
-			(xy 138.43 77.47) (xy 158.75 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cf349662-672e-43d6-8e9e-241b501ff32f")
 	)
 	(wire
 		(pts
@@ -5927,16 +5937,6 @@
 			(type default)
 		)
 		(uuid "d5ec6eb3-2be5-4eeb-adc0-11eaa14dbbb8")
-	)
-	(wire
-		(pts
-			(xy 138.43 55.88) (xy 158.75 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d99e5d6a-ed2d-4fc5-80fd-f3b2025e498f")
 	)
 	(wire
 		(pts
@@ -6040,16 +6040,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 43.18) (xy 158.75 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ea1cf53d-cc69-4771-ba74-86a3df9fa9eb")
-	)
-	(wire
-		(pts
 			(xy 229.87 118.11) (xy 252.73 118.11)
 		)
 		(stroke
@@ -6060,16 +6050,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 90.17) (xy 158.75 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f13f1e61-e07e-4669-98f2-c319ca3a0bd3")
-	)
-	(wire
-		(pts
 			(xy 50.8 91.44) (xy 64.77 91.44)
 		)
 		(stroke
@@ -6077,6 +6057,16 @@
 			(type default)
 		)
 		(uuid "f185bbe4-0e81-48a5-ada1-c8ec1de8492e")
+	)
+	(wire
+		(pts
+			(xy 138.43 64.77) (xy 158.75 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3fa51e7-6909-4a21-a5e2-d88e6adbb8cd")
 	)
 	(wire
 		(pts
@@ -6120,6 +6110,16 @@
 	)
 	(wire
 		(pts
+			(xy 138.43 69.85) (xy 158.75 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f94ef608-cef0-4d4a-854a-856b6d978eca")
+	)
+	(wire
+		(pts
 			(xy 24.13 88.9) (xy 38.1 88.9)
 		)
 		(stroke
@@ -6140,16 +6140,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 48.26) (xy 158.75 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fc75f33d-634d-4bbc-b72b-6859997ea1e4")
-	)
-	(wire
-		(pts
 			(xy 50.8 58.42) (xy 64.77 58.42)
 		)
 		(stroke
@@ -6157,6 +6147,16 @@
 			(type default)
 		)
 		(uuid "feaf1390-9e67-46bc-83a7-7d369c9e670d")
+	)
+	(wire
+		(pts
+			(xy 138.43 87.63) (xy 158.75 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffabcd36-df79-44f9-840c-87f0045c26cb")
 	)
 	(text "front row (backplane)\ntop row (board)"
 		(exclude_from_sim no)
@@ -6234,6 +6234,17 @@
 		)
 		(uuid "0541ec7b-7784-44f7-be7b-271c224e624e")
 	)
+	(label "HostBusAddr0"
+		(at 140.97 64.77 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "05691fe4-48e6-421b-8e32-56405bb18998")
+	)
 	(label "RawHostA12"
 		(at 52.07 78.74 0)
 		(fields_autoplaced yes)
@@ -6255,6 +6266,17 @@
 			(justify left bottom)
 		)
 		(uuid "06f5bbf9-2655-4e0f-a50c-5a1b7f1e5bbc")
+	)
+	(label "HostBusData3"
+		(at 140.97 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0876dd17-d92b-4710-9920-3f033437a574")
 	)
 	(label "RawHostD0"
 		(at 52.07 48.26 0)
@@ -6278,8 +6300,8 @@
 		)
 		(uuid "0ada5f8a-0838-44b6-86c2-a8b1ec5e66c8")
 	)
-	(label "HostA1"
-		(at 243.84 113.03 0)
+	(label "HostBusAddr1"
+		(at 236.22 113.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6311,7 +6333,7 @@
 		)
 		(uuid "0c7d9489-0c40-47e8-95e4-b98a97b29b97")
 	)
-	(label "HostD2"
+	(label "HostBusData2"
 		(at 170.18 100.33 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6333,6 +6355,17 @@
 		)
 		(uuid "10c5b2bb-8354-46a0-98e3-147658856d07")
 	)
+	(label "HostBusData4"
+		(at 140.97 53.34 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1273077a-4cd3-4a64-96dd-672a3a8263e8")
+	)
 	(label "~{IOR3}"
 		(at 26.67 101.6 0)
 		(fields_autoplaced yes)
@@ -6344,8 +6377,8 @@
 		)
 		(uuid "1458e1e1-6904-48e9-9c46-e1f726e01959")
 	)
-	(label "HostD6"
-		(at 140.97 58.42 0)
+	(label "HostBusData7"
+		(at 140.97 60.96 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6353,7 +6386,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "1b5eead8-53b8-4193-99ad-2fecaeb2eaa8")
+		(uuid "169deb82-126e-4ae9-9985-eab327e52774")
 	)
 	(label "-RawHostWMEM"
 		(at 87.63 34.29 0)
@@ -6388,6 +6421,17 @@
 		)
 		(uuid "219197c3-715c-4023-99d3-89bfc542cd55")
 	)
+	(label "HostBusAddr8"
+		(at 140.97 85.09 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "26f628db-651d-49c6-b335-24654496255a")
+	)
 	(label "~{IRQ4}"
 		(at 26.67 78.74 0)
 		(fields_autoplaced yes)
@@ -6399,7 +6443,18 @@
 		)
 		(uuid "2f1eacb5-c836-4de6-a356-bd48182a4ed0")
 	)
-	(label "HostA2"
+	(label "HostBusAddr4"
+		(at 140.97 74.93 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "309587f2-bfdf-455c-b94b-cb3aa4c89f63")
+	)
+	(label "HostBusAddr2"
 		(at 170.18 115.57 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6420,17 +6475,6 @@
 			(justify left bottom)
 		)
 		(uuid "334e59eb-8a99-48a5-8532-7e4471afef23")
-	)
-	(label "HostA5"
-		(at 140.97 77.47 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "34692bc1-0a7f-4d14-a747-ba2e69209f15")
 	)
 	(label "~{IODEV7}"
 		(at 26.67 121.92 0)
@@ -6465,7 +6509,7 @@
 		)
 		(uuid "3c723e03-8445-416d-b44f-b0d5481a2863")
 	)
-	(label "HostA7"
+	(label "HostBusAddr7"
 		(at 170.18 125.73 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6520,17 +6564,6 @@
 		)
 		(uuid "42a73f0f-e45e-439d-a8e9-658e9ebe72de")
 	)
-	(label "HostD5"
-		(at 140.97 55.88 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4433820b-b585-4b53-bfa9-73a7dd9aba72")
-	)
 	(label "RawHostD3"
 		(at 52.07 55.88 0)
 		(fields_autoplaced yes)
@@ -6553,17 +6586,6 @@
 		)
 		(uuid "44c78730-71c3-42fe-a882-136ca3790647")
 	)
-	(label "HostD2"
-		(at 140.97 48.26 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "450043b4-3e7f-46cb-a404-ea9f0a210d87")
-	)
 	(label "~{IODEV9}"
 		(at 26.67 127 0)
 		(fields_autoplaced yes)
@@ -6575,8 +6597,8 @@
 		)
 		(uuid "46bb9277-0b35-4ea2-876e-31ac95313d32")
 	)
-	(label "HostD5"
-		(at 243.84 102.87 0)
+	(label "HostBusData5"
+		(at 236.22 102.87 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6586,7 +6608,7 @@
 		)
 		(uuid "46f9ac20-3dc2-4d42-9b4d-d081e9b423d2")
 	)
-	(label "HostA4"
+	(label "HostBusAddr4"
 		(at 170.18 118.11 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6619,8 +6641,8 @@
 		)
 		(uuid "4868dabe-5d3f-421a-8193-986bdd21ce87")
 	)
-	(label "HostA9"
-		(at 140.97 87.63 0)
+	(label "HostBusAddr6"
+		(at 140.97 80.01 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6628,7 +6650,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "49c61fe7-d773-453c-9f0c-18aa8f93dd31")
+		(uuid "4948163a-2195-4583-9578-8fd4fb5d2fb5")
 	)
 	(label "RawHostA5"
 		(at 90.17 77.47 0)
@@ -6652,7 +6674,7 @@
 		)
 		(uuid "49e36132-fee8-419e-b5ba-7422bde80038")
 	)
-	(label "HostA5"
+	(label "HostBusAddr5"
 		(at 170.18 120.65 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6685,7 +6707,7 @@
 		)
 		(uuid "4dfa11bc-c3c1-41fc-b8da-12f8f8e2a5ce")
 	)
-	(label "HostA9"
+	(label "HostBusAddr9"
 		(at 170.18 110.49 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6696,8 +6718,8 @@
 		)
 		(uuid "5085fb2e-3cc5-43a5-99fb-019628a12bfb")
 	)
-	(label "HostD7"
-		(at 243.84 105.41 0)
+	(label "HostBusData7"
+		(at 236.22 105.41 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6729,8 +6751,8 @@
 		)
 		(uuid "57cebfc5-d72f-4107-b00b-71a3024e3988")
 	)
-	(label "HostA10"
-		(at 243.84 110.49 0)
+	(label "HostBusAddr10"
+		(at 236.22 110.49 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6784,8 +6806,8 @@
 		)
 		(uuid "5d4da865-d71e-48ab-acbf-1c87fa675a2c")
 	)
-	(label "HostD4"
-		(at 140.97 53.34 0)
+	(label "HostBusData1"
+		(at 140.97 45.72 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6793,10 +6815,10 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "5dbe391a-5858-46c6-b8d5-5471f87895b2")
+		(uuid "5ef59708-5905-4166-9756-df3e02517170")
 	)
-	(label "HostA8"
-		(at 243.84 107.95 0)
+	(label "HostBusAddr8"
+		(at 236.22 107.95 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6850,6 +6872,17 @@
 		)
 		(uuid "68286daa-d2fd-47aa-b6c1-d1ef81edb86b")
 	)
+	(label "HostBusData5"
+		(at 140.97 55.88 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "69730a57-c65d-4785-a15a-68630c153f36")
+	)
 	(label "RawHostA10"
 		(at 52.07 73.66 0)
 		(fields_autoplaced yes)
@@ -6861,7 +6894,7 @@
 		)
 		(uuid "6a6d3724-7122-4f6c-b8aa-ec3152a63200")
 	)
-	(label "HostA0"
+	(label "HostBusAddr0"
 		(at 170.18 113.03 0)
 		(fields_autoplaced yes)
 		(effects
@@ -6893,6 +6926,17 @@
 			(justify left bottom)
 		)
 		(uuid "6e125401-38f3-4274-aa96-0b207800d169")
+	)
+	(label "HostBusAddr9"
+		(at 140.97 87.63 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6e6fe5ce-1b62-48e8-9188-a7eda21b3eeb")
 	)
 	(label "RawHostD0"
 		(at 90.17 43.18 0)
@@ -6982,8 +7026,8 @@
 		)
 		(uuid "78ad829f-d145-45f0-ab1d-ccfd178be4c2")
 	)
-	(label "HostA1"
-		(at 140.97 67.31 0)
+	(label "HostBusAddr2"
+		(at 140.97 69.85 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6991,7 +7035,18 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "7c66c77e-b4e5-4f05-a6eb-c3c29030076a")
+		(uuid "7a2df7f9-a674-4547-b948-3e9a7d534a75")
+	)
+	(label "HostBusAddr5"
+		(at 140.97 77.47 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7bcd3945-98b4-4aee-876e-1003fd0b0dc1")
 	)
 	(label "RawHostA9"
 		(at 52.07 71.12 0)
@@ -7037,30 +7092,8 @@
 		)
 		(uuid "802b5d93-2ad7-48bf-bf5f-ffb37598e9ec")
 	)
-	(label "HostA7"
-		(at 140.97 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "807d5ac5-ad03-4330-9768-857931404f40")
-	)
-	(label "HostA6"
-		(at 140.97 80.01 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "80cd39f9-8e7c-416c-acd4-9f0fc7fdc279")
-	)
-	(label "HostA3"
-		(at 243.84 115.57 0)
+	(label "HostBusAddr3"
+		(at 236.22 115.57 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7081,8 +7114,8 @@
 		)
 		(uuid "8238188e-38cc-4e26-9d89-c871e12c5ff3")
 	)
-	(label "HostD1"
-		(at 243.84 97.79 0)
+	(label "HostBusData1"
+		(at 236.22 97.79 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7102,6 +7135,17 @@
 			(justify left bottom)
 		)
 		(uuid "8695563b-4892-438f-bc51-1f7bd5cc6013")
+	)
+	(label "HostBusData2"
+		(at 140.97 48.26 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8745eca4-dfdf-46b6-8ad1-5794bb6041ad")
 	)
 	(label "RawHostA8"
 		(at 52.07 68.58 0)
@@ -7157,17 +7201,6 @@
 			(justify left bottom)
 		)
 		(uuid "8eaffe37-c410-43e2-8952-20988bc71fed")
-	)
-	(label "HostD0"
-		(at 140.97 43.18 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "92aa3c15-568d-4cd3-929b-d0be978f4be7")
 	)
 	(label "RawHostA5"
 		(at 52.07 101.6 0)
@@ -7246,8 +7279,8 @@
 		)
 		(uuid "98d6a996-e346-4dbc-82df-eb1c7acf01c4")
 	)
-	(label "HostD3"
-		(at 243.84 100.33 0)
+	(label "HostBusData3"
+		(at 236.22 100.33 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7268,8 +7301,8 @@
 		)
 		(uuid "9a251ee3-7502-4cd6-a4cb-d34a652dc3e4")
 	)
-	(label "HostD7"
-		(at 140.97 60.96 0)
+	(label "HostBusAddr3"
+		(at 140.97 72.39 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7277,29 +7310,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "9ada7ec9-e829-4d02-ad7e-2189b38c58ae")
-	)
-	(label "HostA0"
-		(at 140.97 64.77 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9ae211f3-f58e-42ea-a3d5-64f5c6d978f1")
-	)
-	(label "HostA8"
-		(at 140.97 85.09 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a278c613-61e2-4f3c-b0a0-3a06b65493bb")
+		(uuid "9e33bbd9-7be7-4719-bb88-af66652cfae8")
 	)
 	(label "RawHostA11"
 		(at 52.07 76.2 0)
@@ -7323,8 +7334,8 @@
 		)
 		(uuid "a2d1b184-381d-4eb9-874b-7344f00ecb39")
 	)
-	(label "HostD1"
-		(at 140.97 45.72 0)
+	(label "HostBusAddr1"
+		(at 140.97 67.31 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7332,7 +7343,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "a398da03-a649-4585-b109-ce576e2b0615")
+		(uuid "a4aa35ac-53cc-4d9e-ab3f-d23dbf395d8e")
 	)
 	(label "RawHostA11"
 		(at 90.17 92.71 0)
@@ -7388,17 +7399,6 @@
 			(justify left bottom)
 		)
 		(uuid "ac1d9bf9-a4cd-44d5-9f11-3441cd71a4c1")
-	)
-	(label "HostA2"
-		(at 140.97 69.85 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "acdab872-5963-43f6-8dc9-b0c2b2b34c8f")
 	)
 	(label "RawHostD7"
 		(at 90.17 60.96 0)
@@ -7554,7 +7554,7 @@
 		)
 		(uuid "bfd5e954-74b8-4e55-a508-9029cbe57774")
 	)
-	(label "HostA6"
+	(label "HostBusAddr6"
 		(at 170.18 123.19 0)
 		(fields_autoplaced yes)
 		(effects
@@ -7576,7 +7576,7 @@
 		)
 		(uuid "c20abc61-0d2f-46e4-a57c-04a83e22490a")
 	)
-	(label "HostD6"
+	(label "HostBusData6"
 		(at 170.18 105.41 0)
 		(fields_autoplaced yes)
 		(effects
@@ -7631,17 +7631,6 @@
 		)
 		(uuid "c86c1c8d-f2b6-49bd-85f8-001c05f2a675")
 	)
-	(label "HostA4"
-		(at 140.97 74.93 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c8ddaa4b-3fdc-46c6-aade-1b933e4b243d")
-	)
 	(label "~{IRQ2}"
 		(at 26.67 76.2 0)
 		(fields_autoplaced yes)
@@ -7686,8 +7675,8 @@
 		)
 		(uuid "d098bcdf-d71a-4a66-a2e3-ff3f8d02032a")
 	)
-	(label "HostD0"
-		(at 243.84 95.25 0)
+	(label "HostBusData0"
+		(at 236.22 95.25 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7708,8 +7697,8 @@
 		)
 		(uuid "d41b991d-c476-4678-920d-e8633c64a53b")
 	)
-	(label "HostA3"
-		(at 140.97 72.39 0)
+	(label "HostBusAddr10"
+		(at 140.97 90.17 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7717,7 +7706,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "d46b0b0b-f366-445a-9b86-3ac390a92610")
+		(uuid "d54821ae-eaea-4eb1-9609-ea29d2812e01")
 	)
 	(label "-VRAMEn"
 		(at 140.97 36.83 0)
@@ -7752,8 +7741,8 @@
 		)
 		(uuid "da57defc-9361-477f-a626-83e6048795c0")
 	)
-	(label "HostA10"
-		(at 140.97 90.17 0)
+	(label "HostBusData0"
+		(at 140.97 43.18 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7761,7 +7750,18 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "dc2468d9-988f-4b1c-ad7b-235f1417a596")
+		(uuid "dafd457a-a291-4147-97dc-a74a11d891a1")
+	)
+	(label "HostBusData6"
+		(at 140.97 58.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "db046163-79cc-40fe-bf56-54416bb7e994")
 	)
 	(label "-RawHostRMEM"
 		(at 52.07 134.62 0)
@@ -7884,17 +7884,6 @@
 		)
 		(uuid "f2989a62-70c3-4b61-8ea0-97fdee7b8357")
 	)
-	(label "HostD3"
-		(at 140.97 50.8 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f494981c-272f-40b7-a645-878082c1041e")
-	)
 	(label "Blue"
 		(at 243.84 123.19 0)
 		(fields_autoplaced yes)
@@ -7906,7 +7895,7 @@
 		)
 		(uuid "f5b53e36-feef-4ccb-a442-47d6269e74fe")
 	)
-	(label "HostD4"
+	(label "HostBusData4"
 		(at 170.18 102.87 0)
 		(fields_autoplaced yes)
 		(effects
@@ -7938,6 +7927,17 @@
 			(justify left bottom)
 		)
 		(uuid "fe8113fc-089d-4dd2-95c1-e849edc69e82")
+	)
+	(label "HostBusAddr7"
+		(at 140.97 82.55 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ff1c416b-d829-41b2-8794-4e3821f9b294")
 	)
 	(symbol
 		(lib_id "power:VCC")
@@ -9608,196 +9608,6 @@
 				(justify left top)
 			)
 		)
-		(pin "HostD0" bidirectional
-			(at 138.43 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "fc7a5f43-39dc-48b0-8293-8e483d0cf6bf")
-		)
-		(pin "HostD1" bidirectional
-			(at 138.43 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "f258d1e3-7cc0-406a-b31f-0f03ac39ddee")
-		)
-		(pin "HostD2" bidirectional
-			(at 138.43 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "6541c773-3c2f-4cb8-84ee-c2de40b965ee")
-		)
-		(pin "HostD3" bidirectional
-			(at 138.43 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "ed443edd-fedc-4e65-ad92-bdefc0b5da3d")
-		)
-		(pin "HostD4" bidirectional
-			(at 138.43 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "1454cf47-b3d2-40ec-a649-ad432183985e")
-		)
-		(pin "HostD5" bidirectional
-			(at 138.43 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "f408ba10-16fb-4f40-9c34-25d7e1290804")
-		)
-		(pin "HostD6" bidirectional
-			(at 138.43 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "1e21ac35-c7a9-418a-a902-2fc293023327")
-		)
-		(pin "HostD7" bidirectional
-			(at 138.43 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "e4a089be-75ff-4ccb-b0e7-f867fd218f1c")
-		)
-		(pin "HostA8" output
-			(at 138.43 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "33cc0256-0c2b-45b8-b58c-412b7a75bfbc")
-		)
-		(pin "HostA9" output
-			(at 138.43 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "59457dac-bb87-4c31-a299-fa670a2baad9")
-		)
-		(pin "HostA10" output
-			(at 138.43 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "bb3311fc-7903-48c2-87bc-24c5d0583c6c")
-		)
-		(pin "HostA0" output
-			(at 138.43 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "c3bd5018-d81f-473b-b25b-9dffcc2160b4")
-		)
-		(pin "HostA1" output
-			(at 138.43 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "787aa2e5-461e-4b46-a38b-9e72500a492b")
-		)
-		(pin "HostA2" output
-			(at 138.43 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "0b831845-ac89-438e-8360-86ea46460809")
-		)
-		(pin "HostA3" output
-			(at 138.43 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "1fe293bb-dbb1-4186-a725-ef35165706f9")
-		)
-		(pin "HostA4" output
-			(at 138.43 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "c2d3eb85-59a9-4e7b-bc5a-d8cef657410f")
-		)
-		(pin "HostA5" output
-			(at 138.43 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "2763cba4-587c-4902-a5b2-fd51aa1e7b7d")
-		)
-		(pin "HostA6" output
-			(at 138.43 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "432ca945-f17a-45ae-b6de-9c2650b0b4a1")
-		)
-		(pin "HostA7" output
-			(at 138.43 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "6545728a-00a2-4e56-b2b3-7d582edc3f0f")
-		)
 		(pin "-HostRMEM" output
 			(at 138.43 29.21 0)
 			(effects
@@ -10127,6 +9937,196 @@
 				(justify right)
 			)
 			(uuid "02bb2878-0c27-4560-a034-6bb1dd1dcbe9")
+		)
+		(pin "HostBusAddr10" output
+			(at 138.43 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "57c63541-f61e-4147-9975-71bc46833b5a")
+		)
+		(pin "HostBusAddr4" output
+			(at 138.43 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "71f9be6b-838a-44e5-9719-0ab6b75b97b6")
+		)
+		(pin "HostBusAddr0" output
+			(at 138.43 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "8152da7a-0796-47fe-9fdb-290327cab7c1")
+		)
+		(pin "HostBusAddr1" output
+			(at 138.43 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "af3c0fe0-79be-47b7-9cd1-1bdfdf3ca108")
+		)
+		(pin "HostBusAddr3" output
+			(at 138.43 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "30a0bcc5-1962-4d5c-b2f2-766a8c6c2d62")
+		)
+		(pin "HostBusAddr9" output
+			(at 138.43 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "3df892ae-274b-4a26-a5df-c8b7df0038fc")
+		)
+		(pin "HostBusAddr8" output
+			(at 138.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "a8802601-d170-4dd2-ab33-17285c0e32ff")
+		)
+		(pin "HostBusAddr2" output
+			(at 138.43 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e45ff30d-918d-4f30-82db-6aa7c93f3a24")
+		)
+		(pin "HostBusData6" bidirectional
+			(at 138.43 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c1b1190f-e030-4378-95d4-bc6b3276c0c2")
+		)
+		(pin "HostBusData5" bidirectional
+			(at 138.43 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9443fc25-7545-4e57-8d8d-a7e8d040a91f")
+		)
+		(pin "HostBusData3" bidirectional
+			(at 138.43 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c5483e4e-080a-4cbe-8ba0-243ed15ec756")
+		)
+		(pin "HostBusData7" bidirectional
+			(at 138.43 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "a3d180a8-a898-4877-b23a-87545f414651")
+		)
+		(pin "HostBusData4" bidirectional
+			(at 138.43 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "84091b43-a315-4ad5-ad82-2db2f77da3b8")
+		)
+		(pin "HostBusData2" bidirectional
+			(at 138.43 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "bd5596d0-4d91-461f-8174-a667c34eda1b")
+		)
+		(pin "HostBusData1" bidirectional
+			(at 138.43 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9ffc3b37-f432-4841-b9cc-d0520e70635b")
+		)
+		(pin "HostBusData0" bidirectional
+			(at 138.43 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "a856ce36-0b16-47dc-9d78-5cb37d6aa168")
+		)
+		(pin "HostBusAddr5" output
+			(at 138.43 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "47bc3c0b-7f5d-4146-8678-fc272dcd359d")
+		)
+		(pin "HostBusAddr6" output
+			(at 138.43 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "917df412-5b5d-49a6-8462-b59b163766f5")
+		)
+		(pin "HostBusAddr7" output
+			(at 138.43 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "d6fc841f-43c7-4490-ba14-3cd8d80b5012")
 		)
 		(instances
 			(project "FPGA_VGA"
