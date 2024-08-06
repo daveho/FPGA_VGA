@@ -41,7 +41,7 @@ module vram( // Inputs
 
       if ( hostRd ) begin
         // read data from host side
-        hostRdDataReg <= vramData[hostAddr];
+        hostRdDataReg <= 8'hFF; // FIXME: invalid data for now
       end else begin
         // write data from host  side
         vramData[hostAddr] <= hostWrData;
