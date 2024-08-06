@@ -146,7 +146,7 @@ module icevga3( // clock and reset
                       .hostRdData( hostRdData ),
                       .displayRdData( displayRdData ) );
 
-  // pixel generator module and signals
+  // pixel generator module
 
   pixgen pixgen_instance(  // Inputs
                           .nrst( nrst ),
@@ -167,22 +167,20 @@ module icevga3( // clock and reset
                           .fgIntense( fgIntense ),
                           .pixel( pixel ) );
 
-  // for now, don't do anything with the host side of the VRAM
-  assign hostAddr = 13'd0;
-  assign hostSelect = 1'b0;
-  assign hostRd = 1'b1;
+  // host_interface module
 
-  // Host bus data direction control.
-
-  // host wants to read from display controller (nHostRMEM asserted)
-  localparam BUS_HOST_READ = 1'b0;
-
-  // host wants to write to display controller (nHostWMEM asserted)
-  localparam BUS_HOST_WRITE = 1'b1;
-
-  // for now, host interface is disable (hostBusData set to hi-Z,
-  // hostBusDir set to BUS_HOST_WRITE)
-  assign hostBusData = "xxxxxxxx";
-  assign hostBusDir = BUS_HOST_WRITE;
+  host_interface host_interface_instance( .clk(clk),
+                                          .hostBusAddr( hostBusAddr ),
+                                          .hostBusData( hostBusData ),
+                                          .nHostRMEM( nHostRMEM ),
+                                          .nHostWMEM( nHostWMEM ),
+                                          .nHostVRAMEn( nHostVRAMEn ),
+                                          .nHostBankRegEn( nHostBankRegEn ),
+                                          .hostBusDir( hostBusDir ),
+                                          .hostRdData( hostRdData ),
+                                          .hostSelect( hostSelect ),
+                                          .hostRd( hostRd ),
+                                          .hostAddr( hostAddr ),
+                                          .hostWrData( hostWrData ) );
 
 endmodule
