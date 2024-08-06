@@ -169,6 +169,7 @@ module icevga3( // clock and reset
 
   // host_interface module
 
+/*
   host_interface host_interface_instance( .nrst( nrst ),
                                           .clk( clk ),
                                           .hostBusAddr( hostBusAddr ),
@@ -183,5 +184,11 @@ module icevga3( // clock and reset
                                           .hostRd( hostRd ),
                                           .hostAddr( hostAddr ),
                                           .hostWrData( hostWrData ) );
+*/
+  assign hostSelect = 1'b0;
+  assign hostRd = 1'b1;
+  assign hostAddr = 13'd0;
+  assign hostBusData = 8'bZZZZZZZZ;
+  assign hostBusDir = 1'b1;
 
 endmodule
