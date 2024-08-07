@@ -134,13 +134,15 @@ module icevga3( // clock and reset
   wire hostWr;
   wire [7:0] readoutData;
 
-  vram vram_instance( // Inputs
+  vram vram_instance( // Reset and clock
+                      .nrst( nrst ),
                       .clk( clk ),
+                      // Write interface (used by host_interface)
                       .vramWrAddr( hostWrAddr ),
                       .vramWrData( vramWrData ),
                       .vramWr( hostWr ),
-                      .readoutAddr( readoutAddr ), // displayAddr=readoutAddr
-                      // Outputs
+                      // Readout interface (used by pixgen)
+                      .readoutAddr( readoutAddr ),
                       .readoutData( readoutData ) );
 
   // pixel generator module

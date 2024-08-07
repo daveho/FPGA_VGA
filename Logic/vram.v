@@ -9,6 +9,7 @@
 // the host interface using the single read port.
 
 module vram( // Inputs
+             input nrst,
              input clk,
 
              // Write interface
@@ -29,19 +30,41 @@ module vram( // Inputs
     `include "init_vram.vh"
   end
 
+  // register to keep track of whether data is read from
+  // the readout address or the host address (these are done
+  // on alternating cycles in order to multiplex the single
+  // hardware block RAM read port)
+  reg toggle;
+
   // registers for data read from video memory
   reg [7:0] readoutDataReg;
 
   always @( posedge clk ) begin
 
-    if ( vramWr ) begin
-      // write data from host  side
-      vramData[vramWrAddr] <= vramWrData;
-    end
+    if ( nrst == 1'b0 ) begin
+      // in reset
+      toggle <= 1'b0;
+      readoutDataReg <= 8'd0;
+    end else begin
+      // not in reset
 
-    // on the display side, we just output whatever data
-    // is selected by displayAddr
-    readoutDataReg <= vramData[readoutAddr];
+      if ( vramWr ) begin
+        // write data from host  side
+        vramData[vramWrAddr] <= vramWrData;
+      end
+
+      if ( toggle == 1'b0 ) begin
+        // on the display side, we just output whatever data
+        // is selected by readoutAddr
+        readoutDataReg <= vramData[readoutAddr];
+      end else begin
+        // TODO: read data selected by host address
+      end
+
+      // update toggle
+      toggle <= ~toggle;
+
+    end
 
   end
 
