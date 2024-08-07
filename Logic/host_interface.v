@@ -13,10 +13,14 @@ module host_interface( input nrst,
                        // direction control for 74VLC245 transceiver interfacing
                        // host data bus (1=host writes, 0=host reads)
                        output hostBusDir,
-                       // interface to display side of VRAM
-                       output [12:0] hostWrAddr, // the VRAM address the host wants to write
-                       output [7:0] hostWrData,  // the data the host wants to write to VRAM
-                       output hostWr);
+                       // host address
+                       output [12:0] hostAddr, // the VRAM address the host wants to write or read
+                       // write interface to the VRAM
+                       output [7:0] hostWrData,  // data to write to VRAM (selected by hostAddr)
+                       output hostWr,            // 1=write data, 0=don't write data
+                       // read interface to the VRAM
+                       input [7:0] hostRdData    // data read from VRAM (selected by hostAddr)
+                       );
 
   // data transfer directions
   localparam DIR_HOST_TO_DISPLAY = 1'b1; // the default, and when host is writing data to VRAM or bank reg
@@ -54,10 +58,7 @@ module host_interface( input nrst,
   // data read from or written to VRAM is addressed by
   // the bank register (high 2 bits) and the hostBusAddr
   // (low 11 bits)
-/*
   assign hostAddr = { bankReg[1:0], hostBusAddr };
-*/
-  assign hostWrAddr = { bankReg[1:0], hostBusAddr };
 
   // when data is written to the VRAM, it comes from hostBusData
   assign hostWrData = hostBusData;
