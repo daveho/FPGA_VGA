@@ -7,7 +7,7 @@
 module pixgen( // Inputs
                input nrst,
                input clk,
-               input [7:0] vramRdData,
+               input [7:0] readoutData,
                input [3:0] vCount,
                input nVis,
                input [2:0] readoutCount, // from readout module
@@ -85,9 +85,9 @@ module pixgen( // Inputs
         // attribute register, and load or shift output shift register
 
         if ( readoutCount == 3'd3 ) begin
-          charReg <= vramRdData;
+          charReg <= readoutData;
         end else if ( readoutCount == 3'd7 ) begin
-          attrReg <= vramRdData;
+          attrReg <= readoutData;
           shiftReg <= fontRdData;
         end
 
@@ -99,9 +99,9 @@ module pixgen( // Inputs
         // registers and load shift register
 
         if ( readoutCount == 3'd3 ) begin
-          charReg <= vramRdData;
+          charReg <= readoutData;
         end else if ( readoutCount == 3'd7 ) begin
-          attrReg <= vramRdData;
+          attrReg <= readoutData;
           shiftReg <= fontRdData;
         end
       end else if ( ~nVis ) begin

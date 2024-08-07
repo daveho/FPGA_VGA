@@ -16,9 +16,9 @@ module vram( // Inputs
              input [7:0] vramWrData,     // data to write
              input vramWr,               // 1=write to VRAM, 0=don't write
 
-             // Read interface
-             input [12:0] vramRdAddr,    // display-side address
-             output [7:0] vramRdData     // data read from display side
+             // Display-side read interface
+             input [12:0] readoutAddr,   // display-side address
+             output [7:0] readoutData    // data read from display side
              );
 
   // video memory
@@ -30,7 +30,7 @@ module vram( // Inputs
   end
 
   // registers for data read from video memory
-  reg [7:0] vramRdDataReg;
+  reg [7:0] readoutDataReg;
 
   always @( posedge clk ) begin
 
@@ -41,11 +41,11 @@ module vram( // Inputs
 
     // on the display side, we just output whatever data
     // is selected by displayAddr
-    vramRdDataReg <= vramData[vramRdAddr];
+    readoutDataReg <= vramData[readoutAddr];
 
   end
 
   // drive outputs from read data registers
-  assign vramRdData = vramRdDataReg;
+  assign readoutData = readoutDataReg;
 
 endmodule
