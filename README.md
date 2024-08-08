@@ -16,7 +16,7 @@ logic are implemented. All that remains is to implement a host interface so
 the host system can write data to the video memory.
 
 **Update 8-Aug-2024**: the block RAM in the ICE40 UP5K FPGA used in the
-Upduino 3.0/3.1 does is not true dual port, which will make the host interface
+Upduino 3.0/3.1 is not true dual port memory, which will make the host interface
 implementation a bit more complicated than I originally envisioned,
 since the pixel generator and the host interface will need to share
 the single hardware read port to the video memory. So, it may be a while
