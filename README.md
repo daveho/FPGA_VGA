@@ -15,6 +15,13 @@ a test image. Test benches for the sync logic and character/attribute fetch
 logic are implemented. All that remains is to implement a host interface so
 the host system can write data to the video memory.
 
+**Update 8-Aug-2024**: the block RAM in the ICE40 UP5K FPGA used in the
+Upduino 3.0/3.1 does is not true dual port, which will make the host interface
+implementation a bit more complicated than I originally envisioned,
+since the pixel generator and the host interface will need to share
+the single hardware read port to the video memory. So, it may be a while
+before I get this working.
+
 The [Schematic](Schematic) directory has a KiCad schematic, and the
 [Logic](Logic) directory has the Verilog code for the FPGA. I use
 [APIO](https://github.com/FPGAwars/apio) as the front end for the FPGA tools (see my
