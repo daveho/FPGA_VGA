@@ -15,13 +15,6 @@ a test image. Test benches for the sync logic and character/attribute fetch
 logic are implemented. All that remains is to implement a host interface so
 the host system can write data to the video memory.
 
-**Update 8-Aug-2024**: the block RAM in the ICE40 UP5K FPGA used in the
-Upduino 3.0/3.1 is not true dual port memory, which will make the host interface
-implementation a bit more complicated than I originally envisioned,
-since the pixel generator and the host interface will need to share
-the single hardware read port to the video memory. So, it may be a while
-before I get this working.
-
 The [Schematic](Schematic) directory has a KiCad schematic, and the
 [Logic](Logic) directory has the Verilog code for the FPGA. I use
 [APIO](https://github.com/FPGAwars/apio) as the front end for the FPGA tools (see my
@@ -38,3 +31,31 @@ basically went from having no idea how to simulate designs to being able to writ
 some halfway-reasonable testbenches in a day or two. Thank you, John!
 
 Stay tuned!
+
+## Updates
+
+**17-Nov-2025**: Reading an article on Hacker News about an
+[FPGA implementation of the IBM PC-XT](https://bit-hack.net/2025/11/10/fpga-based-ibm-pc-xt/)
+gave me a really good idea about how to work around the single
+read port on the ICE40 Block RAM. The idea is to use two separate
+memory banks for the VRAM. Writes from the host system
+go to both banks in parallel, so their contents are always identical.
+The display rasterization hardware reads from one bank, and the
+host system (when it wants to read from VRAM) reads from the other
+bank. This would allow for VRAM with one write port and two
+fully-independent read ports. One minor difficulty is that the
+UP5K device on the Upduino 3 has only 15 KB of VRAM, whereas the
+current design uses 8 KB for VRAM. The 80x30 character display
+needs only 4800 bytes, so reducing the VRAM to 6 KB would be sufficient.
+A 6 KB VRAM bank could be implemented as a 4 KB lower bank and a
+2 KB upper bank, mapped into an 8 KB address space with the upper
+2 KB bank mirrored twice in the upper 4 KB of addresses. This wouldn't
+cause any problems in practice. I'm planning to work on this soon
+(maybe over Thanksgiving.)
+
+**8-Aug-2024**: the block RAM in the ICE40 UP5K FPGA used in the
+Upduino 3.0/3.1 is not true dual port memory, which will make the host interface
+implementation a bit more complicated than I originally envisioned,
+since the pixel generator and the host interface will need to share
+the single hardware read port to the video memory. So, it may be a while
+before I get this working.
