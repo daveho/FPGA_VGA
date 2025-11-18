@@ -4798,4 +4798,3 @@ vramData[13'd4796] = 8'd164;
 vramData[13'd4797] = 8'd152;
 vramData[13'd4798] = 8'd210;
 vramData[13'd4799] = 8'd152;
-
