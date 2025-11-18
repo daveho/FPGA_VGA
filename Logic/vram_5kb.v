@@ -34,18 +34,18 @@ module vram_5kb( // Inputs
   always @( posedge clk ) begin
 
     // Write to lower bank?
-    if ( vramWr == 1'b1 & vramWrAddr[11] == 1'b0 ) begin
+    if ( vramWr == 1'b1 & vramWrAddr[12] == 1'b0 ) begin
       vramDataLower[vramWrAddr[11:0]] <= vramWrData;
     end
 
     // Write to upper bank?
-    if ( vramWr == 1'b1 & vramWrAddr[11] == 1'b1 ) begin
+    if ( vramWr == 1'b1 & vramWrAddr[12] == 1'b1 ) begin
       vramDataUpper[vramWrAddr[9:0]] <= vramWrData;
     end
 
     // Copy read data to vramRdDataReg, selecting from lower or upper
     // bank using high bit of vramRdAddr
-    if ( vramRdAddr[11] == 1'b0 ) begin
+    if ( vramRdAddr[12] == 1'b0 ) begin
       vramRdDataReg <= vramDataLower[vramRdAddr[11:0]];
     end else begin
       vramRdDataReg <= vramDataUpper[vramRdAddr[9:0]];
