@@ -34,6 +34,14 @@ Stay tuned!
 
 ## Updates
 
+**20-Nov-2025**: In my previous thoughts about using mirrored VRAM
+banks, I had forgotten that I was using 4 KB of block RAM to store
+the VGA font. So, the revised plan is mirrored
+[5 KB banks](https://github.com/daveho/FPGA_VGA/blob/90469b43ef998fe6521666e1b50f645583a588a4/Logic/vram_5kb.v)
+of VRAM.  With the 4 KB of block RAM used for the font, this means
+that we're using 2×5 + 4 = 14 KB, which is just under the 15 KB of
+block RAM that the Upduino 3's UP5K FPGA has available.
+
 **17-Nov-2025**: Reading an article on Hacker News about an
 [FPGA implementation of the IBM PC-XT](https://bit-hack.net/2025/11/10/fpga-based-ibm-pc-xt/)
 gave me a really good idea about how to work around the single
