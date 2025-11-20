@@ -132,13 +132,25 @@ module icevga3( // clock and reset
   wire [7:0] vramRdDataToDisplay;  // data byte read from VRAM for display
   wire [7:0] vramRdDataToHost;     // data byte read from VRAM for host
 
+  // For whatever reason, yosys is unhappy if the memory address
+  // sent to a block RAM is not provided by flip flops.  On each clock,
+  // grab the current data on the hostAddr inputs and save them in a
+  // register. This register is then used to select the address of the
+  // byte the host wants to read or write.  As long as the address is
+  // valid before the host initiates a read or write, this should be fine,
+  // the VRAM will see the correct address by the time it matters.
+  reg [12:0] hostAddrReg;
+  always @( posedge clk ) begin
+    hostAddrReg <= hostAddr;
+  end
+
   vram_mirrored vram_instance( // Inputs
                                .clk( clk ),
-                               .vramWrAddr( hostAddr ),
+                               .vramWrAddr( hostAddrReg ),
                                .vramWrData( vramWrData ),
                                .vramWr( hostWr ),
                                .vramRdAddr( readoutAddr ), // displayAddr=readoutAddr
-                               .vramRdAddr2( hostAddr ),
+                               .vramRdAddr2( hostAddrReg ),
                                // Outputs
                                .vramRdData( vramRdDataToDisplay ),
                                .vramRdData2( vramRdDataToHost ) );
