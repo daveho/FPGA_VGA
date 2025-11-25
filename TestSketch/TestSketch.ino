@@ -22,6 +22,63 @@
 #define PIN_NW       12
 #define PIN_NRST     13
 
+// Set the display address.
+void setAddr( uint16_t addr ) {
+  // address bits are sent to shift register from MSB to LSB
+  for ( int i = 0; i < 16; ++i ) {
+    int bit = ( addr & 0x8000 ) != 0 ? HIGH : LOW;
+    // output the bit
+    digitalWrite( PIN_SER_DATA, bit );
+    // clock it in
+    digitalWrite( PIN_SER_CLK, HIGH );
+    digitalWrite( PIN_SER_CLK, LOW );
+    // go to next bit
+    addr <<= 1;
+  }
+  // Clock data into the output register
+  digitalWrite( PIN_SER_RCLK, HIGH );
+  digitalWrite( PIN_SER_RCLK, LOW );
+}
+
+void writeVRAM( uint16_t addr, uint8_t byte ) {
+  setAddr( addr );
+  PORTD = byte;
+  digitalWrite( PIN_NW, LOW );
+  digitalWrite( PIN_NW, HIGH );
+}
+
+#define BLACK   0
+#define RED     1
+#define GREEN   2
+#define YELLOW  3
+#define BLUE    4
+#define MAGENTA 5
+#define CYAN    6
+#define GRAY    7
+#define INTENSE 8
+#define ATTR( fg, bg ) (bg|(fg << 4 ))
+
+// Display text, starting at specified VRAM address
+void displayText( uint16_t addr, const char *s, uint8_t attr ) {
+  while ( *s != '\0' ) {
+    char c = *s;
+    ++s;
+    writeVRAM( addr, c );
+    ++addr;
+    writeVRAM( addr, attr );
+    ++addr;
+  }
+}
+
+// Clear the display
+void clearDisplay() {
+  uint16_t addr = 0;
+  for ( int16_t i = 0; i < 2400; ++i ) {
+    writeVRAM( addr++, ' ' );
+    writeVRAM( addr++, ATTR(GRAY, BLACK) );
+  }
+}
+
 void setup() {
   // Initial state
 
@@ -52,6 +109,9 @@ void setup() {
   digitalWrite( PIN_NRST, LOW );
   delay( 1 );
   digitalWrite( PIN_NRST, HIGH );
+
+  clearDisplay();
+  displayText( 2314, "Hello!", ATTR(GRAY, BLACK) );
 }
 
 void loop() {
