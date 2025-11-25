@@ -34,6 +34,10 @@ Stay tuned!
 
 ## Updates
 
+**25-Nov-2025**: the entire design, including a bidirectional
+interface to allow the host system to write to and read from VRAM,
+appears to be fully working. Video coming soon. Stay tuned!
+
 **20-Nov-2025**: In my previous thoughts about using mirrored VRAM
 banks, I had forgotten that I was using 4 KB of block RAM to store
 the VGA font. So, the revised plan is mirrored
