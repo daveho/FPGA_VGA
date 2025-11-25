@@ -123,7 +123,6 @@ bool checkDisplayClear( bool good ) {
 }
 
 // Check that the "Hello!" text was written correctly.
-//
 bool checkHelloText( bool good ) {
   const char expected[] = "Hello!";
   uint16_t addr = HELLO_TEXT_ADDR;
@@ -137,6 +136,46 @@ bool checkHelloText( bool good ) {
       good = false;
   }
   return good;
+}
+
+// Display a test pattern
+void testPattern() {
+  uint8_t ch = 0;
+  uint8_t attr = 0;
+  uint16_t addr = 0;
+
+  for ( int i = 0; i < 2400; ++i ) {
+    writeVRAM( addr++, ch++ );
+    writeVRAM( addr++, attr++ );
+  }
+}
+
+// Check that VRAM contains expected contents of test pattern
+bool checkTestPattern( bool good ) {
+  uint8_t expected_ch = 0;
+  uint8_t expected_attr = 0;
+  uint16_t addr = 0;
+
+  for ( int i = 0; i < 2400; ++i ) {
+    uint8_t val;
+    val = readVRAM( addr++ );
+    if ( val != expected_ch )
+      good = false;
+    ++expected_ch;
+    val = readVRAM( addr++ );
+    if ( val != expected_attr )
+      good = false;
+    ++expected_attr;
+  }
+
+  return good;
+}
+
+void successDisplay() {
+  clearDisplay();
+  displayText( 1022, "All tests passed!", ATTR(GREEN|INTENSE, BLACK) );
+  displayText( 2588, "Writing to VRAM and reading from VRAM appear to work", ATTR(YELLOW|INTENSE, BLUE) );
+  displayText( 2942, "LET'S FRICKIN' GO", ATTR(CYAN|INTENSE, BLACK) );
 }
 
 void runTests() {
@@ -155,6 +194,16 @@ void runTests() {
   good = checkDisplayClear( good );
   displayText( 2314, "Hello!", ATTR(YELLOW|INTENSE, BLUE) );
   good = checkHelloText( good );
+
+  delay( 1000 ); // let hello message be visible for one second
+
+  testPattern();
+
+  delay( 1000 ); // let test pattern be visible for one second
+
+  // If tests passed, display success text
+  if ( good )
+    successDisplay();
 
   // Turn on green or red LED
   digitalWrite( good ? PIN_GREEN_LED : PIN_RED_LED, HIGH );
