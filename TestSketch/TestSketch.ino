@@ -15,10 +15,43 @@
 //   Arduino D12: output to display -W (write strobe)
 //   Arduino D13: output to display -RST (reset)
 
+#define PIN_SER_DATA 8
+#define PIN_SER_CLK  9
+#define PIN_SER_RCLK 10
+#define PIN_NR       11
+#define PIN_NW       12
+#define PIN_NRST     13
 
 void setup() {
-  // put your setup code here, to run once:
+  // Initial state
 
+  // PORTD configured as output
+  // D8-D13 configured as output
+
+  DDRD = 0xFF;
+  pinMode( PIN_SER_DATA, OUTPUT );
+  pinMode( PIN_SER_CLK, OUTPUT );
+  pinMode( PIN_SER_RCLK, OUTPUT );
+  pinMode( PIN_NR, OUTPUT );
+  pinMode( PIN_NW, OUTPUT );
+  pinMode( PIN_NRST, OUTPUT );
+
+  // Drive serial data and register clocks low
+  digitalWrite( PIN_SER_CLK, LOW );
+  digitalWrite( PIN_SER_RCLK, LOW );
+
+  // De-assert -R, -W, -RST
+  digitalWrite( PIN_NR, HIGH );
+  digitalWrite( PIN_NW, HIGH );
+  digitalWrite( PIN_NRST, HIGH );
+
+  // Wait for a bit
+  delay( 2 );
+
+  // Generate a reset pulse for the display controller
+  digitalWrite( PIN_NRST, LOW );
+  delay( 1 );
+  digitalWrite( PIN_NRST, HIGH );
 }
 
 void loop() {
