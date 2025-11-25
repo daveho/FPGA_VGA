@@ -13,8 +13,8 @@ module vram_5kb( // Inputs
                  input vramWr,               // 1=write to VRAM, 0=don't write
     
                  // Read interface
-                 input [12:0] vramRdAddr,    // display-side address
-                 output [7:0] vramRdData     // data read from display side
+                 input [12:0] vramRdAddr,    // address to read from
+                 output [7:0] vramRdData     // data read from VRAM
                  );
 
   // VRAM lower (4KB) and upper (1KB) banks.

@@ -7,10 +7,10 @@ module icevga3( // clock and reset
                 input nrst,
                 input ext_osc,
                 // host interface
-                input[7:0] hostData, // for now, only support writing VRAM
-                input[12:0] hostAddr,
-                input nHostRd,       // ignored for now
-                input nHostWr,
+                inout[7:0] hostDataPhys,  // physical I/O pins connected to data bus
+                input[12:0] hostAddr,     // VRAM address host system wants to access
+                input nHostRd,            // 0 when host system wants to read from VRAM
+                input nHostWr,            // 1 when host system wants to write to VRAM
                 // outputs to monitor
                 output redOut,
                 output greenOut,
@@ -128,27 +128,45 @@ module icevga3( // clock and reset
 
   wire [7:0] vramWrData;  // data byte host system wants to write to VRAM
   wire hostWr;            // 1=host wants to write
+  wire hostRd;            // 1=host wants to read
   wire [7:0] vramRdDataToDisplay;  // data byte read from VRAM for display
   wire [7:0] vramRdDataToHost;     // data byte read from VRAM for host
 
+  // For whatever reason, yosys is unhappy if the memory address
+  // sent to a block RAM is not provided by flip flops.  On each clock,
+  // grab the current data on the hostAddr inputs and save them in a
+  // register. This register is then used to select the address of the
+  // byte the host wants to read or write.  As long as the address is
+  // valid before the host initiates a read or write, this should be fine,
+  // the VRAM will see the correct address by the time it matters.
+  reg [12:0] hostAddrReg;
+  always @( posedge clk ) begin
+    hostAddrReg <= hostAddr;
+  end
+
   vram_mirrored vram_instance( // Inputs
                                .clk( clk ),
-                               .vramWrAddr( hostAddr ),
+                               .vramWrAddr( hostAddrReg ),
                                .vramWrData( vramWrData ),
                                .vramWr( hostWr ),
                                .vramRdAddr( readoutAddr ), // displayAddr=readoutAddr
-                               .vramRdAddr2( hostAddr ),
+                               .vramRdAddr2( hostAddrReg ),
                                // Outputs
                                .vramRdData( vramRdDataToDisplay ),
                                .vramRdData2( vramRdDataToHost ) );
 
   // Direct host interface control signals and data bus to direct writes
   // to VRAM
-  assign vramWrData = hostData;
   assign hostWr = ~nHostWr;
+  assign hostRd = ~nHostRd;
 
-  // TODO: output vramRdDataToHost to hostData if nHostRd is asserted,
-  //       otherwise tristate hostData
+  // bidirectional interface to host data bus
+  ext_data_bus ext_host_data_bus(
+                                  .outToBus( vramRdDataToHost ),
+                                  .inFromBus( vramWrData ),
+                                  .phys( hostDataPhys ),
+                                  .outputEnable( hostRd )
+                                );
 
   // pixel generator module
 
