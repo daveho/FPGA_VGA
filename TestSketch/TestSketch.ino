@@ -47,15 +47,15 @@ void setAddr( uint16_t addr ) {
 }
 
 void writeVRAM( uint16_t addr, uint8_t byte ) {
-  setAddr( addr );
+  setAddr( addr ); // assert address to write to
   DDRD = 0xFF; // set port D pins to output
   PORTD = byte;
-  digitalWrite( PIN_NW, LOW );
-  digitalWrite( PIN_NW, HIGH );
+  digitalWrite( PIN_NW, LOW ); // start write pulse
+  digitalWrite( PIN_NW, HIGH ); // end write pulse
 }
 
 uint8_t readVRAM( uint16_t addr ) {
-  setAddr( addr );
+  setAddr( addr ); // assert address to read from
   DDRD = 0x00;  // set port D pins to input
   PORTD = 0x00; // no pull-ups
   uint8_t data;
@@ -102,8 +102,6 @@ void clearDisplay() {
   }
 }
 
-#define HELLO_TEXT_ADDR 2314
-
 // Check the result of clearing the display:
 // every character should be set to space, and every
 // attribute should be set to fg=GRAY bg=BLACK.
@@ -121,6 +119,8 @@ bool checkDisplayClear( bool good ) {
 
   return good;
 }
+
+#define HELLO_TEXT_ADDR 2314
 
 // Check that the "Hello!" text was written correctly.
 bool checkHelloText( bool good ) {
