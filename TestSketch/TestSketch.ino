@@ -138,10 +138,14 @@ bool checkHelloText( bool good ) {
   return good;
 }
 
+// Start character and attribute values for test pattern
+#define TEST_PATTERN_START_CH   58
+#define TEST_PATTERN_START_ATTR 150
+
 // Display a test pattern
 void testPattern() {
-  uint8_t ch = 0;
-  uint8_t attr = 0;
+  uint8_t ch = TEST_PATTERN_START_CH;
+  uint8_t attr = TEST_PATTERN_START_ATTR;
   uint16_t addr = 0;
 
   for ( int i = 0; i < 2400; ++i ) {
@@ -152,8 +156,8 @@ void testPattern() {
 
 // Check that VRAM contains expected contents of test pattern
 bool checkTestPattern( bool good ) {
-  uint8_t expected_ch = 0;
-  uint8_t expected_attr = 0;
+  uint8_t expected_ch = TEST_PATTERN_START_CH;
+  uint8_t expected_attr = TEST_PATTERN_START_ATTR;
   uint16_t addr = 0;
 
   for ( int i = 0; i < 2400; ++i ) {
@@ -198,6 +202,7 @@ void runTests() {
   delay( 1000 ); // let hello message be visible for one second
 
   testPattern();
+  good = checkTestPattern( good );
 
   delay( 1000 ); // let test pattern be visible for one second
 
