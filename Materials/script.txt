@@ -1,0 +1,73 @@
+[1] Hello again!
+
+If you've followed my channel, you know that since 2016 I have been
+working on an 8-bit microcomputer system based on the Motorola 6809
+CPU. One of my goals for that system is to create a VGA text display.
+In the summer of 2024, I designed and implemented a text display using
+GALs, dual port static RAM, and various 7400-series logic chips.
+
+To validate the design, I used Logisim Evolution to create simulations
+of the various modules on the design. This allowed me to have reasonable
+confidence that when I built the circuit, it would work as intended.
+
+Although there were some stumbling blocks along the way, including
+some challenging signal integrity issues, I did eventually get the
+design to fully work.
+
+This process was lots of fun, and it really allowed me to understand
+the problem of designing a text display at a detailed level.
+
+However, the resulting design was not very practical.
+
+Even though using programming GAL devices allowed me to implement
+a custom logic to take the place of what likely would have been dozens
+of individual logic chips, the resulting design still had a total
+of 25 ICs, including two IDT7134 dual port static RAMS in PLCC 52
+packages.
+
+Even if I used mostly surface mount ICs, this design would be very
+hard to fix on a 15x9 centimeter PCB, which is the standard card size
+I am using in the 6809 system. So, it was going to be difficult to
+translate my working design into a practical "production" version.
+
+[2] One way to reduce the physical size of the circuit would be
+to implement it using a single FPGA. A single Lattice Ultraplus 5K
+FPGA, such as the one at the heart of the Upduino 3 development board,
+has ample capacity to implement a text display, including embedded
+RAM for the video memory.
+
+You may have seen previous videos where I tried and failed to make
+progress on implementing a display controller using an FPGA.
+Even though I feel relatively confident in designing, building, and
+debugging digital circuits, something about programming FPGAs
+just didn't click for me. I've been experimenting with FPGAs and
+Verilog off and on for almost 5 years, and although I have learned
+a fair amount, I haven't exactly been making rapid progress.
+
+What I realized after getting my GAL-based display controller to
+work was that I had already done the hard part, which is developing
+the logic implementing the precise timing needed to rasterize the
+contents of a framebuffer.
+
+So, maybe I could "port" the design to Verilog, so that it could work
+in an FPGA.
+
+Anyway, I was able to do precisely that. Although I got most of the
+design working in an FPGA in a week or so back in 2024, one technical detail took
+me more than a year to figure out.
+
+[Obligatory Baymax "I am not fast" clip.]
+
+In this video,
+
+I'll discuss the easy parts of translating the design to Verilog,
+including the timing, sync generation, video memory readout, and
+pixel generation,
+
+and the harder part, which was implementing an interface to allow
+a host system to read and write the contents of video memory.
+
+I'll demonstrate the FPGA-based video controller using an Arduino
+to stand in for the host system,
+
+and I'll conclude with my plans for what comes next.
