@@ -20,13 +20,13 @@ the problem of designing a text display at a detailed level.
 However, the resulting design was not very practical.
 
 Even though using programmable GAL devices allowed me to implement
-a custom logic to take the place of what likely would have been dozens
+custom logic to take the place of what likely would have been dozens
 of individual logic chips, the resulting design still had a total
 of 25 ICs, including two IDT7134 dual port static RAMS in PLCC 52
 packages.
 
 Even if I used mostly surface mount ICs, this design would be very
-hard to fix on a 15x9 centimeter PCB, which is the standard card size
+hard to fit on a 15x9 centimeter PCB, which is the standard card size
 I am using in the 6809 system. So, it was going to be difficult to
 translate my working design into a practical "production" version.
 
