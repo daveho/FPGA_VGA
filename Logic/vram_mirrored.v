@@ -8,13 +8,12 @@
 // we need 1 x write and 2 x read ports. We can fake this
 // by implementing mirrored VRAM instances with identical
 // contents. All host writes go to both, and each
-// instance has its own read port to be used by the
-// host system and the rasterization hardware.
-// The UP5K used in the Upduino 3 has 30KB of block
-// RAM total. We use 10 KB for VRAM (2 x 5 KB banks,
-// implemented as instances of vram_5kb). This leaves
-// enough room left over for the 4KB of BRAM we need
-// for font memory.
+// instance has its own read port, so that the rasterization
+// hardware and the host system can independently read the
+// contents of VRAM.  The UP5K used in the Upduino 3 has
+// 15KB of block RAM total. We use 10 KB as VRAM (2 x 5 KB banks,
+// implemented as instances of vram_5kb). This leaves enough
+// room for the 4KB of block RAM we need for font memory.
 
 module vram_mirrored( // Inputs
                       input clk,
