@@ -52,4 +52,6 @@ This video: `\pause`{=latex}
 * Host interface (initially got stuck here, then
   learned about an easy workaround) `\pause`{=latex}
 * Demo `\pause`{=latex}
-* Next steps
+* Next steps `\pause`{=latex}
+
+As always, links to the code and schematic are in the video description.
