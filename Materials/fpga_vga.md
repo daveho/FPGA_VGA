@@ -15,93 +15,41 @@ header-includes:
 
 ## Hello again! {.t}
 
-Summer 2024[^1]: I made a VGA text display using GALs,
-dual port static RAMs, and 74-series logic chips
+Summer 2024[^*]: I made a VGA text display using GALs,
+dual port static RAMs, and 7400-series logic chips `\pause`{=latex}
 
-[^1]: In North America
+Validated the design by simulating in Logisim Evolution `\pause`{=latex}
 
-## Hello again! {.t}
+Got it to work! `\pause`{=latex}
 
-Summer 2024[^1]: I made a VGA text display using GALs,
-dual port static RAMs, and 74-series logic chips
+Lots of fun, great learning experience `\pause`{=latex}
 
-Validated the design by simulating in Logisim Evolution
-
-[^1]: In North America
-
-## Hello again! {.t}
-
-Summer 2024[^1]: I made a VGA text display using GALs,
-dual port static RAMs, and 74-series logic chips
-
-Validated the design by simulating in Logisim Evolution
-
-Got it to work!
-
-[^1]: In North America
-
-## Hello again! {.t}
-
-Summer 2024[^1]: I made a VGA text display using GALs,
-dual port static RAMs, and 74-series logic chips
-
-Validated the design by simulating in Logisim Evolution
-
-Got it to work!
-
-Lots of fun, great learning experience
-
-[^1]: In North America
-
-## Hello again! {.t}
-
-Summer 2024[^1]: I made a VGA text display using GALs,
-dual port static RAMs, and 74-series logic chips
-
-Validated the design by simulating in Logisim Evolution
-
-Got it to work!
-
-Lots of fun, great learning experience
-
-*Not very practical*
-
-[^1]: In North America
-
-## Hello again! {.t}
-
-Summer 2024[^1]: I made a VGA text display using GALs,
-dual port static RAMs, and 74-series logic chips
-
-Validated the design by simulating in Logisim Evolution
-
-Got it to work!
-
-Lots of fun, great learning experience
-
-*Not very practical*
+*Not very practical* `\pause`{=latex}
 
 * Resulting design has 25 ICs, including two
-  52-pin PLCC packages
-
-[^1]: In North America
-
-## Hello again! {.t}
-
-Summer 2024[^1]: I made a VGA text display using GALs,
-dual port static RAMs, and 74-series logic chips
-
-Validated the design by simulating in Logisim Evolution
-
-Got it to work!
-
-Lots of fun, great learning experience
-
-*Not very practical*
-
-* Resulting design has 25 ICs, including two
-  52-pin PLCC packages
+  52-pin PLCC packages `\pause`{=latex}
 * Even using surface mount ICs, very challenging
   to fit on 15cm by 9cm PCB
 
-[^1]: In North America
+[^*]: In North America
+
+## Use an FPGA? {.t}
+
+The obvious move would be to use an FPGA `\pause`{=latex}
+
+I've stuggled for *years* to learn FPGAs well enough to make
+a display controller `\pause`{=latex}
+
+But...I now had a working design `\pause`{=latex}
+
+* **Maybe I could translate it to Verilog** `\pause`{=latex}
+
+TL;DR I translated the design to Verilog `\pause`{=latex}
+
+This video: `\pause`{=latex}
+
+* Translating the design to Verilog (the easy parts) `\pause`{=latex}
+* Host interface (initially got stuck here, then
+  learned about an easy workaround) `\pause`{=latex}
+* Demo `\pause`{=latex}
+* Next steps
