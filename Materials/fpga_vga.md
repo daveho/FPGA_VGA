@@ -40,7 +40,8 @@ The obvious move would be to use an FPGA `\pause`{=latex}
 I've stuggled for *years* to learn FPGAs well enough to make
 a display controller `\pause`{=latex}
 
-But...I now had a working design `\pause`{=latex}
+But...I now had a working design, even if not
+an FPGA-based design `\pause`{=latex}
 
 * **Maybe I could translate it to Verilog** `\pause`{=latex}
 
