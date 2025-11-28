@@ -19,7 +19,7 @@ the problem of designing a text display at a detailed level.
 
 However, the resulting design was not very practical.
 
-Even though using programming GAL devices allowed me to implement
+Even though using programmable GAL devices allowed me to implement
 a custom logic to take the place of what likely would have been dozens
 of individual logic chips, the resulting design still had a total
 of 25 ICs, including two IDT7134 dual port static RAMS in PLCC 52
