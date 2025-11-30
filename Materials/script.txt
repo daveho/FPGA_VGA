@@ -71,3 +71,7 @@ I'll demonstrate the FPGA-based video controller using an Arduino
 to stand in for the host system,
 
 and I'll conclude with my plans for what comes next.
+
+# The Easy Parts
+
+

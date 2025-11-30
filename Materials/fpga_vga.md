@@ -6,6 +6,13 @@ pandoc-beamer-block:
   - classes: [info]
   - classes: [alert]
     type: alert
+pandoc-latex-fontsize:
+  - classes: [small]
+    size: small
+  - classes: [footnotesize]
+    size: footnotesize
+  - classes: [scriptsize]
+    size: scriptsize
 header-includes:
   - \usepackage{graphbox}
   - \usepackage[export]{adjustbox}
@@ -56,3 +63,98 @@ This video: `\pause`{=latex}
 * Next steps `\pause`{=latex}
 
 As always, links to the code and schematic are in the video description.
+
+## Modules {.t}
+
+The original design had 6 modules, each implemented as a GAL
+(or two GALs in the case of the pixel generator) and,
+where necessary, supporting ICs:
+
+Module              | GAL equations
+------------------- | -------------
+Horizontal count    | HCntCtrl.pld
+Vertical count      | VCntCtrl.pld
+Sync generation     | Sync.pld
+Readout address gen | ROutCtrl.pld
+VRAM                | VRAMCtrl.pld
+Pixel gen           | PxGnCtrl.pld, ShiftReg.pld
+
+## Modules (FPGA) {.t}
+
+In the FPGA version of the design, each module is implemented
+by one Verilog module:
+
+Module              | GAL equations               | Verilog
+------------------- | --------------------------- | -----------
+Horizontal count    | HCntCtrl.pld                | hcount.v
+Vertical count      | VCntCtrl.pld                | vcount.v
+Sync generation     | Sync.pld                    | sync.v
+Readout address gen | ROutCtrl.pld                | readout.v
+VRAM                | VRAMCtrl.pld                | vram\_mirrored.v
+Pixel gen           | PxGnCtrl.pld, ShiftReg.pld  | pixgen.v
+
+`\pause`{=latex} To convert the design to Verilog, I translated the
+logic in the original GAL equations and the supporting ICs to
+equivalent Verilog constructs in the most direct way possible.
+
+## Converting to Verilog {.t}
+
+General approach to conversion to Verilog:`\pause`{=latex}
+
+* GAL registers and 7400 series registers (e.g., 74ALS273)
+  become Verilog registers (`reg` instances) `\pause`{=latex}
+* Counters (e.g., 74ALS163) also become Verilog registers
+  (because Verilog supports addition, e.g. `addr + 13'd1;`
+  `\pause`{=latex}
+* Clocking data into a flip flop becomes a nonblocking assignment
+  in an `always @( posedge clk )` block `\pause`{=latex}
+* An array of 8-bit vectors with suitable read and write signaling
+  will be inferred as block RAM: takes place of dual port static
+  RAM (IDT7134) `\pause`{=latex}
+* Input and output pins become module input and output wires
+
+## Example: Horizontal Count module {.t}
+
+The horizontal count module counts the horizontal pixels in each
+scanline, and generates appropriate timing signal needed by
+the vertical count and sync generation modules
+
+In the original implementation:
+
+* 3x 74ALS163 4-bit counters
+* GAL for control and timing signal generation
+
+Example timing signal: horizontal count end (true if horizontal count
+value is at maximum for scanline):
+
+```
+; HCOUNT_END is when HCOUNT=799 (1100011111 binary)
+HCEND   = HC9 * HC8 * /HC7 * /HC6 * /HC5 * HC4 * HC3 * HC2 * HC1 * HC0
+```
+
+## Example: Horizontal Count module {.t}
+
+In Verilog: define a 12-bit register, reset or increment is as needed:
+
+```verilog { .scriptsize }
+reg [11:0] count;
+
+always @(posedge clk) begin
+  if ( nrst == 1'b0 ) begin
+    // in reset, clear the counter
+    count <= 12'd0;
+  end else begin
+    // not in reset, either advance count by 1 or reset to 0 (if at end of scanline)
+    if ( hCountEnd )
+      count <= 12'd0;
+    else
+      count <= count + 12'd1;
+  end
+end
+```
+
+Generating a control signal:
+
+```verilog { .scriptsize }
+assign hCountEnd = (count == H_COUNT_END);
+```
