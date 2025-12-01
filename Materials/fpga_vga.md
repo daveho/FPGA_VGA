@@ -107,6 +107,7 @@ GAL registers, 7400 series registers (e.g., 74ALS273) | `reg` instances
 Counters (e.g., 74ALS163)            | `reg` instances (Verilog supports addition!)
 Clock data into a flip flop          | Nonblocking assignment in `always` block
 Dual port RAM (IDT7134)              | Array of 8-bit vectors inferred as BRAM
+Font ROM (27SF512)                   | 4 KB of pre-initialized block RAM
 Module inputs and outputs            | Module inputs and outputs
 
 <!--
@@ -220,6 +221,72 @@ always @( posedge clk ) begin
     end else if ( vEndPulse ) begin
       vSyncReg <= 1'b1; // end vsync pulse
     end
+  end
+end
+```
+
+## Example: Readout module {.t}
+
+::: columns
+
+:::: column
+
+::::: {.small}
+The Readout module generates the VRAM addresses of the character
+and attribute values needed to generate the pixels for each visible
+scanline.
+
+Original implementation: 3 74ALS163 counters (current address),
+2 74ALS273 registers (row begin address), GAL22V10 for control.
+
+* Row of characters = 160 bytes (80 char/attr pairs)
+* Characters are 8 pixels wide
+* Update readout addr every 4 pixels
+* Same sequence of addresses for each
+  scanline in a character row
+
+Annoyance: VRAM addresses are 13 bits, so the GAL generates the
+MSB of the current address. (Each '163 is only 4 bits.)
+
+:::::
+
+::::
+
+:::: column
+
+`{\ }`{=latex}
+
+::::
+
+:::
+
+## Example: Readout module {.t}
+
+In Verilog, the row begin address and current (readout) address
+are just 13 bit registers:
+
+```verilog { .scriptsize }
+reg [12:0] rowBeginAddrReg;
+reg [12:0] readoutAddrReg;
+```
+
+Conditionally update their values according to current control
+signal values:
+
+```verilog { .scriptsize }
+// Example logic: update rowBeginAddrReg or readoutAddrReg
+// at end of scanline (when hSync pulse starts)
+if ( vActive & hBeginPulse ) begin
+  if ( vCount == 4'b1111 ) begin
+    // We've reached the last pixel row in the current character row,
+    // so set the row begin address to the current readout address
+    // (in order to start the next character row)
+    rowBeginAddrReg <= readoutAddrReg;
+  end else begin
+    // The next pixel row will be part of the same character row,
+    // so set the readout address back to the current value of the
+    // row begin address register.
+    readoutAddrReg <= rowBeginAddrReg;
   end
 end
 ```
