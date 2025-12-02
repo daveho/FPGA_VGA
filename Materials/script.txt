@@ -72,6 +72,7 @@ to stand in for the host system,
 
 and I'll conclude with my plans for what comes next.
 
-# The Easy Parts
+As always, links to the schematic and code are in the video description.
 
+# The Easy Parts
 

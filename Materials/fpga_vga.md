@@ -22,6 +22,8 @@ header-includes:
 
 ## Hello again! {.t}
 
+Since 2016, I've been working on a 6809-based microcomputer system `\pause`{=latex}
+
 Summer 2024[^*]: I made a VGA text display using GALs,
 dual port static RAMs, and 7400-series logic chips `\pause`{=latex}
 
