@@ -140,8 +140,9 @@ In the original implementation:
 
 `\vfill`{=latex}
 
-Example timing signal: horizontal count end (true if horizontal count
-value is at maximum for scanline)
+Example timing signal: horizontal count`\\`{=latex}
+end (true if horizontal count value is at`\\`{=latex}
+maximum for scanline)
 
 ``` { .scriptsize }
 ; HCOUNT_END is when HCOUNT=799 (1100011111 binary)
