@@ -336,20 +336,6 @@ UP5K block RAM has one read port and one write port `\pause`{=latex}
 
 **What to do?**
 
-<!--
-The IDT7134 static RAM chips used in the original design are true dual-port
-RAMs. Each port can be used independently to read or write, as needed. `\pause`{=latex}
-
-The Readout and Pixel Generator modules need to read.  The host system
-(e.g., my 6809 microcomputer) needs to read and write. No problem
-for a true dual port memory. `\pause`{=latex}
-
-UP5K block RAM is **not** true dual port memory. There is one read
-port and one write port. We want to allow the host system to read from
-video memory, but readout/pixgen hardware definitely needs to read
-as well. `\pause`{=latex} **What to do?**
--->
-
 ## Initial idea: time-share the read port {.t}
 
 Rasterization hardware only reads VRAM 1 out of 4 clock cycles `\pause`{=latex}
