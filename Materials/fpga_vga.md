@@ -323,14 +323,14 @@ Well...`\pause `{=latex}**There was one problem**
 * Synchronous (not a problem) `\pause`{=latex}
 * Not truly dual ported (**big problem!**) `\pause`{=latex}
 
-IDT7134 static RAMS (original design) are true dual port memory `\pause`{=latex}
+IDT7134 static RAMs (original design) are true dual port memory `\pause`{=latex}
 
 * Each port can read and write as necessary `\pause`{=latex}
 * Rasterization hardware needs to read from VRAM `\pause`{=latex}
 * Host system needs to read/write VRAM `\pause`{=latex}
 * *No problem, they each use one port* `\pause`{=latex}
 
-UP5K block RAM has one read port and one write port `\pause`{=latex}
+UP5K block RAMs have one read port and one write port `\pause`{=latex}
 
 * *Rasterization hardware and host system both want the read port!* `\pause`{=latex}
 
