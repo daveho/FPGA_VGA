@@ -365,3 +365,17 @@ We get a second read port with minimal effort `\pause`{=latex}
 * At the cost of doubling the amount of block RAM used `\pause`{=latex}
 * Good tradeoff when the limiting factor is the skill of the
   designer `\includegraphics[width=1.2em]{figures/fpga_vga/laughing.pdf}`{=latex}
+
+## Utilizing block RAM {.t}
+
+The UP5K has 15 KB of block RAM `\pause`{=latex}
+
+We need 4 KB for the font, so 11 KB is left for VRAM `\pause`{=latex}
+
+Original design: 2xIDT7134, 8 KB total VRAM `\pause`{=latex}
+
+In the FPGA-based design, mirrored 5 KB banks requiring
+a total of 10 KB `\pause`{=latex}
+
+* Each 5 KB bank is really 4 KB + 1 KB, with the 1 KB
+  mirrored 4 times in the upper 4 KB of VRAM addresses
