@@ -372,7 +372,7 @@ The UP5K has 15 KB of block RAM `\pause`{=latex}
 
 We need 4 KB for the font, so 11 KB is left for VRAM `\pause`{=latex}
 
-Original design: 2xIDT7134, 8 KB total VRAM `\pause`{=latex}
+Original design: 2 x IDT7134, 8 KB total VRAM `\pause`{=latex}
 
 In the FPGA-based design, mirrored 5 KB banks requiring
 a total of 10 KB `\pause`{=latex}
