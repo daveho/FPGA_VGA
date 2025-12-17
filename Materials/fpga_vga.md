@@ -108,9 +108,11 @@ Original Design | Verilog
 GAL registers, 7400 series registers (e.g., 74ALS273) | `reg` instances
 Counters (e.g., 74ALS163)            | `reg` instances (Verilog supports addition!)
 Clock data into a flip flop          | Nonblocking assignment in `always` block
-Dual port RAM (IDT7134)              | Array of 8-bit vectors inferred as BRAM
+Dual port RAM (IDT7134)              | Array of 8-bit registers inferred as BRAM
 Font ROM (27SF512)                   | 4 KB of pre-initialized block RAM
 Module inputs and outputs            | Module inputs and outputs
+
+`\pause `{=latex} Overall, this wasn't too hard!
 
 <!--
 * GAL registers and 7400 series registers (e.g., 74ALS273)
@@ -151,7 +153,7 @@ HCEND   = HC9 * HC8 * /HC7 * /HC6 * /HC5 * HC4 * HC3 * HC2 * HC1 * HC0
 
 ## Example: Horizontal Count module {.t}
 
-In Verilog: define a 12-bit register, reset or increment is as needed:
+In Verilog: define a 12-bit register, reset or increment it as needed:
 
 ```verilog { .scriptsize }
 reg [11:0] count;
