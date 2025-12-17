@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="12.7mm"
+   height="12.7mm"
+   viewBox="0 0 12.7 12.7"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="angry_face.svg"
+   inkscape:export-filename="angry_face.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.77593294"
+     inkscape:cx="24.486652"
+     inkscape:cy="23.842267"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="406"
+     inkscape:window-y="207"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-98.689583,-142.08125)">
+    <g
+       id="color"
+       transform="matrix(0.26458333,0,0,0.26458333,95.514583,138.90625)">
+      <path
+         fill="#fcea2b"
+         d="M 36,13 C 23.3177,13 13,23.3177 13,36 13,48.6822 23.3177,59 36,59 48.6822,59 59,48.6822 59,36 59,23.3177 48.6822,13 36,13 Z"
+         id="path1" />
+    </g>
+    <g
+       id="line"
+       transform="matrix(0.26458333,0,0,0.26458333,95.514583,138.90625)">
+      <circle
+         cx="36"
+         cy="36"
+         r="23"
+         fill="none"
+         stroke="#000000"
+         stroke-miterlimit="10"
+         stroke-width="2"
+         id="circle1" />
+      <path
+         d="m 30,32.9252 c 0,1.6567 -1.3448,3 -3,3 -1.6553,0 -3,-1.3433 -3,-3 0,-1.6553 1.3447,-3 3,-3 1.6552,0 3,1.3448 3,3"
+         id="path2" />
+      <path
+         d="m 48,32.9252 c 0,1.6567 -1.3447,3 -3,3 -1.6553,0 -3,-1.3433 -3,-3 0,-1.6553 1.3447,-3 3,-3 1.6553,0 3,1.3448 3,3"
+         id="path3" />
+      <line
+         x1="23"
+         x2="30"
+         y1="24"
+         y2="28"
+         fill="none"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="10"
+         stroke-width="2"
+         id="line3" />
+      <line
+         x1="49"
+         x2="42"
+         y1="24"
+         y2="28"
+         fill="none"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="10"
+         stroke-width="2"
+         id="line4" />
+      <path
+         fill="none"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="10"
+         stroke-width="2"
+         d="m 29.5,43 c 1.2841,-0.6376 3.9847,-1.0308 6.8421,-0.9981 2.6235,0.03 4.9897,0.4146 6.1579,0.9981"
+         id="path4" />
+    </g>
+  </g>
+</svg>

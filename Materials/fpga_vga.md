@@ -295,3 +295,87 @@ if ( vActive & hBeginPulse ) begin
   end
 end
 ```
+
+## Aside: Verilog test benches {.t}
+
+A viewer of a previous video suggested that I check out
+the John's Basement youtube channel to learn about simulation. `\pause`{=latex}
+
+"Test bench" = unit tests for a module (or maybe several modules
+working together) `\pause`{=latex}
+
+* Feed in simulated clock and control signals, verify that
+  correct output signals are generated `\pause`{=latex}
+
+**This was very, very helpful!** `\pause`{=latex}
+
+I wrote test benches for the Horizontal Count, Vertical Count,
+and Readout modules. (Testing Readout indirectly tests Sync.)
+This helped me gain confidence that the design would work when
+uploaded to the FPGA.
+
+## So, everything was easy, right? {.t}
+
+Well...`\pause `{=latex}**There was one problem**
+
+`\pause `{=latex} The UP5K FPGA's block RAM is`\pause`{=latex}
+
+* Synchronous (not a problem) `\pause`{=latex}
+* Not truly dual ported (**big problem!**) `\pause`{=latex}
+
+IDT7134 static RAMS (original design) are true dual port memory `\pause`{=latex}
+
+* Each port can read and write as necessary `\pause`{=latex}
+* Rasterization hardware needs to read from VRAM `\pause`{=latex}
+* Host system needs to read/write VRAM `\pause`{=latex}
+* *No problem, they each use one port* `\pause`{=latex}
+
+UP5K block RAM has one read port and one write port `\pause`{=latex}
+
+* *Rasterization hardware and host system both want the read port!* `\pause`{=latex}
+
+**What to do?**
+
+<!--
+The IDT7134 static RAM chips used in the original design are true dual-port
+RAMs. Each port can be used independently to read or write, as needed. `\pause`{=latex}
+
+The Readout and Pixel Generator modules need to read.  The host system
+(e.g., my 6809 microcomputer) needs to read and write. No problem
+for a true dual port memory. `\pause`{=latex}
+
+UP5K block RAM is **not** true dual port memory. There is one read
+port and one write port. We want to allow the host system to read from
+video memory, but readout/pixgen hardware definitely needs to read
+as well. `\pause`{=latex} **What to do?**
+-->
+
+## Initial idea: time-share the read port {.t}
+
+Rasterization hardware only reads VRAM 1 out of 4 clock cycles `\pause`{=latex}
+
+Could use the other clock cycles to allow the host system to read `\pause`{=latex}
+
+Not a terrible idea, but significantly complicates the design `\pause`{=latex}
+
+* I made some attempts, but they didn't work `\includegraphics[width=1em]{figures/fpga_vga/angry_face.pdf}`{=latex}
+
+## Genius idea {.t}
+
+*When in doubt, use brute force* — Ken Thompson `\pause`{=latex}
+
+When reading Hacker News I saw a link to a project to create
+an FPGA implementation of the IBM PC-XT `\pause`{=latex}
+
+Awesome idea: maintain two copies of video memory `\pause`{=latex}
+
+* Writes from host system go to both (so they always have
+  the same content) `\pause`{=latex}
+* Rasterization hardware reads from one copy `\pause`{=latex}
+* Host system reads from the other copy `\pause`{=latex}
+
+We get a second read port with minimal effort `\pause`{=latex}
+
+* At the cost of doubling the amount of block RAM used `\pause`{=latex}
+* Good tradeoff when the limiting factor is the skill of the
+  designer `\includegraphics[width=1.2em]{figures/fpga_vga/laughing.pdf}`{=latex}
