@@ -206,3 +206,26 @@ simply 13-bit reg instances. The conditional logic to express when and
 how the registers are updated is also much simpler: for example,
 the logic to update the row begin address and readout address registers
 at the end of a scanline is dramatically simpler.
+
+One of the reasons I struggled with FPGA programming previously was that
+the signals inside the FPGA can't be probed, so debugging tools like
+oscilloscopes and logic analyzers can be used easily. To overcome
+this difficulty, FPGA designs should be tested in simulation.
+
+A viewer of a previous video recommended that I check out the John's
+Basement youtube channel to learn about how to do simulation in Verilog,
+and specifically, how to write Verilog test benches.
+
+A test bench is like a unit test for a Verilog module or modules.
+The test bench generates clock and control signals to feed to the modules'
+inputs, and checks the generated output signals to make sure they are correct.
+
+Writing test benches was very helpful.
+
+Based on what I learned from the Johns's Basement videos, I was able to
+implement test benches for the horizontal count, vertical count, and
+readout modules. Knowing how the modules behaved in simulation gave me
+confidence that they would work as expected on the actual FPGA.
+
+Within a week or so of starting the FPGA version of the design, it
+was producing a correct image, which was very gratifying progress.
