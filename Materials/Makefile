@@ -47,7 +47,15 @@ all : $(PDFS)
 # Generate frame image PNGs (for the video)
 render : fpga_vga.pdf
 	mkdir -p frame
-	convert -density 900 -resize 1920x1080 fpga_vga.pdf 'frame/fpga_vga_%02d.png'
+	qpdf --split-pages=1 fpga_vga.pdf 'frame/fpga_vga_%d.pdf'
+	@echo -n 'Converting frames to png'
+	@for f in $$(cd frame && ls *.pdf); do \
+		convert -density 900 -resize 1920x1080 frame/$${f} frame/$$(basename $${f} .pdf).png; \
+		echo -n '.'; \
+	done
+	@echo 'done'
+
+#	convert -density 900 -resize 1920x1080 fpga_vga.pdf 'frame/fpga_vga_%02d.png'
 
 all : $(PDFS)
 
