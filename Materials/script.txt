@@ -74,7 +74,7 @@ and I'll conclude with my plans for what comes next.
 
 As always, links to the schematic and code are in the video description.
 
-# The Easy Parts
+# Part 1: The Easy Stuff
 
 In the original design, I used 7 GAL22V10 devices to generate timing
 and control signals.
@@ -90,17 +90,17 @@ sync pulses and pixel visibility.
 
 The Sync Generation GAL uses the timing signals from the horizontal and
 vertical count GALs to generate the horizontal and vertical sync
-signals, to provide precise timing information needed to read
+signals, to provide the precise timing information needed to read
 character and attribute data from VRAM, and to rasterize the fetched
 characters and attributes.
 
-The Readout Address Generator module controls the counters used to generate
+The Readout Address Generator GAL controls the counters used to generate
 the address of the next character or attribute byte to fetch from VRAM.
 
-The VRAM Control generates the chip select and read/write strobe
+The VRAM Control GAL generates the chip select and read/write strobe
 signals used to read data from and write data to the VRAM chips.
 
-The Pixel Generator module controls the registers used to store the
+The Pixel Generator GAL controls the registers used to store the
 current character and attribute being rendered, and also controls the
 shift register used to rasterize the pixels in the current character
 row being displayed. The shift register is implemented as a GAL, although
@@ -108,7 +108,7 @@ in retrospect at 74ALS166 chip likely would have worked just as well.
 
 In converting the design to Verilog, I simply created a Verilog module
 to take the place of each module in the original design. Each Verilog
-subsumes the functionality of one of the GALs in the original design,
+module subsumes the functionality of one of the GALs in the original design,
 along with whatever support chips it controlled. The goal was to
 have the Verilog implementation be functionally identical to the
 original hardware.
@@ -153,10 +153,10 @@ from simple combinational logic as a function of the current state
 of the reset signals and the horizontal count bits. For example,
 the horizontal count end signal asserted when the end of the scanline
 is reached simply tests the bits of the horizontal count to see if they
-are all equal to an expected value.
+are equal to an expected value.
 
 In the Verilog implementation of the Horizontal Count module, the
-74ASL163 counters are replaced by a 12 bit register, and on each positive
+74ALS163 counters are replaced by a 12 bit register, and on each positive
 clock edge, its value is either incremented or reset to 0.
 
 Generating control signals is simply a boolean function computed from
