@@ -388,3 +388,19 @@ Overall, this was pretty easy to implement
   `\pause`{=latex}
 
 The readout and pixel generator modules did not need any modification
+
+## Host system reads and writes {.t}
+
+Now I just needed the actual host interface `\pause`{=latex}
+
+Goal: make the display controller's framebuffer look like a normal
+asynchronous static RAM
+
+Signals: `\pause`{=latex}
+
+* Bidirectional 8-bit data bus interface `\pause`{=latex}
+* 13-bit address input `\pause`{=latex}
+* Read strobe input: assert to read byte from VRAM `\pause`{=latex}
+* Write strobe input: assert to write byte to VRAM `\pause`{=latex}
+
+Problem: how does bidirectional I/O work in Verilog?

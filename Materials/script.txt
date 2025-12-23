@@ -319,3 +319,98 @@ of `vram_5k` to provide one write port and two read ports.
 No changes to the readout and pixel generator modules were needed,
 which is good, since they are the most complex part of the overall
 design.
+
+Now that I had the additional VRAM read port I needed, it was time to
+implement the interface to the host system.
+
+To accommodate the 6809 with its 8-bit data bus, I implemented the host
+interface so that the display controller looks more or less like an
+asynchronous static RAM to the host system. The host interface signals are
+
+* A bidirectional 8-bit data bus interface used to write data to
+  or read data from the display controller
+* A 13-bit address input to select the byte to read or write
+* A read strobe input: when the host system asserts the read strobe,
+  the display controller outputs the data byte selected by the
+  asserted address
+* A write strobe input: when the host system asserts the write
+  strobe, the data driven on the data bus is stored in the VRAM
+  byte selected by the asserted address
+
+At this point I encountered a new challenge: I had never worked with
+bidirectional I/O in Verilog.
+
+## Bidirectional I/O
+
+In old-school microprocessor systems, communication between the CPU and
+peripherals is generally accomplished using a shared parallel data bus,
+where at any given time, only one device outputs to the bus.
+This requires non-outputting devices to "tristate" their connection
+to the data bus, meaning that their pins connected to the data bus
+have a high impedence to any other potential, meaning that little
+current will flow into or out of the device.
+
+FPGAs generally don't use tristate logic internally. When multiple
+outputs need to influcence an input, the FPGA synthesis tool will
+implement a multiplexor to select the correct output signal according to
+the control signals used in the design. Although Verilog does have
+a syntax for expressing tristate logic, the OSS CAD suite and its
+place-and-route implementation for ICE40 FPGAs like the UP5K
+have extremely limited support for it.
+
+My requirements for bidirectional I/O were
+
+- if the write strobe is asserted, the display controller needs to
+  use the data bus pins as inputs, to access the data the host
+  system wants to write
+- if the read strobe is asserted, the display controller needs to
+  use the data bus pins as outputs, to send out the data the host wants
+  to read
+
+My initial investigations of how to make this work led to a quite
+a bit of confusion.
+
+## John's Basement to the rescue again
+
+Once again, the John's Basement channel saved the day.
+One of John's videos covered the `SB_IO` hardware primitive,
+which is the ICE40-specific mechanism for allowing an external
+FPGA pin to be used for bidirectional I/O. It's actually quite
+simple to use: you specify a net constrained to an external pin,
+and it gives you one input and one output. It also takes an
+output enable signal: if you assert it, whatever value your
+design is asserting on the `SB_IO` instance's input is
+output to the physical pin. When the output enable is not
+asserted, you can read the signal on the external pin from the
+`SB_IO` instance's output. The only real difficulty in using
+`SB_IO` is knowing how to specify the value of the `PIN_TYPE`
+parameter, which sets configuration bits needed to enable
+bidirectional I/O on the pin. Fortunately, the John's Basement
+video gave me the magic incantation, and even explained the purpose
+of each configuration bit in terms of the ICE40 pin interface
+circuitry.
+
+Using my newly-gained knowledge about `SB_IO`, I implemented
+a Verilog module called `ext_data_bus` to instantiate `SB_IO`
+for each FPGA pin connected to the host data bus. The output
+enable signal is simply the read strobe asserted by the host
+system. Ultimately, the host read and write strobes are connected
+to the write and read ports of the internal VRAM, so that if
+the host says it wants to read a byte, we signal the VRAM read
+port appropriately, and if the host says it wants to write a byte,
+we signal the VRAM write port appropriately. Every though VRAM
+reads and writes are synchronous internally, the VGA dot clock
+is really fast compared to the host system, and as long as one
+VGA clock edge happens during the host bus cycle, the data transfer
+will work correctly.
+
+## Does it work?
+
+So, aside from using `SB_IO` to make bidirectional I/O work, and of
+course using mirrored VRAM banks to provide two read ports to
+VRAM, I really didn't need to do anything special to implement
+the host interface. The host system more or less talks directly to
+the VRAM read and write ports. Or, at least, that's what I
+was hoping would work.
+
+So, did it actually work?
