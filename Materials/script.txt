@@ -311,3 +311,11 @@ available to have mirrored 8 KB banks, I implemented VRAM as
 mirrored 5 KB banks. Each 5 KB bank is actually a 4 KB lower
 block and a 1 KB upper block mirrored 4 times in the upper 4 KB of
 the VRAM address space.
+
+In the end, implementing mirrored VRAM was fairly easy. The
+`vram_5kb` module implements a 5 KB bank with one read port and
+one write port, and the `vram_mirrroed` module uses two instances
+of `vram_5k` to provide one write port and two read ports.
+No changes to the readout and pixel generator modules were needed,
+which is good, since they are the most complex part of the overall
+design.

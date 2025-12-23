@@ -378,4 +378,13 @@ In the FPGA-based design, mirrored 5 KB banks requiring
 a total of 10 KB `\pause`{=latex}
 
 * Each 5 KB bank is really 4 KB + 1 KB, with the 1 KB
-  mirrored 4 times in the upper 4 KB of VRAM addresses
+  mirrored 4 times in the upper 4 KB of VRAM addresses `\pause`{=latex}
+
+Overall, this was pretty easy to implement
+
+* `vram_5kb.v`: Verilog module implementing one 5 KB VRAM bank
+* `vram_mirrored.v`: Verilog module using two `vram_5k` instances
+  to implement a 5 KB VRAM with one write port and two read ports
+  `\pause`{=latex}
+
+The readout and pixel generator modules did not need any modification
