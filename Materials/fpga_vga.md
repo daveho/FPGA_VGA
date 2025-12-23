@@ -404,3 +404,37 @@ Signals: `\pause`{=latex}
 * Write strobe input: assert to write byte to VRAM `\pause`{=latex}
 
 Problem: how does bidirectional I/O work in Verilog?
+
+## Bidirectional I/O {.t}
+
+In an old-school microcomputer system: `\pause`{=latex}
+
+* CPU and all peripheral chips connect to a shared parallel data bus `\pause`{=latex}
+* Only the chip that is "talking" actively drives the bus `\pause`{=latex}
+* All others "tristate" their connections to the data bus `\pause`{=latex}
+* Peripherals have an "output enable" of some sort to tell them when
+  they can drive output on the data bus `\pause`{=latex}
+
+FPGAs don't use tristate logic internally (AFAIA) `\pause`{=latex}
+
+Synthesis tools create muxes whenever multiple outputs influence
+a single input `\pause`{=latex}
+
+Verilog does have a syntax for tristate logic (e.g., `1'bz` to mean a
+"high impedence" logic value) `\pause`{=latex}
+
+* But OSS CAD suite (Yosys, ICEStorm, etc.) doesn't really support Verilog
+  tristate logic
+
+## What I needed {.t}
+
+What I needed was `\pause`{=latex}
+
+* If host asserts the write strobe, store the data on the bus
+  to VRAM (data bus is input) `\pause`{=latex}
+* If host asserts the read strobe, drive one VRAM data byte onto
+  the data bus (data bus is output) `\pause`{=latex}
+
+How to tell the synthesis to make this happen? `\pause`{=latex}
+
+Did some initial research, wasn't sure how to proceed
