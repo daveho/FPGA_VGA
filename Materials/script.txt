@@ -402,7 +402,7 @@ we signal the VRAM write port appropriately. Every though VRAM
 reads and writes are synchronous internally, the VGA dot clock
 is really fast compared to the host system, and as long as one
 VGA clock edge happens during the host bus cycle, the data transfer
-will work correctly.
+will, in theory, work correctly.
 
 ## Does it work?
 

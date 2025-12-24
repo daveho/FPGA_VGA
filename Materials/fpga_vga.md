@@ -438,3 +438,44 @@ What I needed was `\pause`{=latex}
 How to tell the synthesis to make this happen? `\pause`{=latex}
 
 Did some initial research, wasn't sure how to proceed
+
+## John's Basement to the rescue again {.t}
+
+Found a video on John's Basement covering the ICE40
+`SB_IO` primitive `\pause`{=latex}
+
+* Configures an external pin for I/O, including bidirectional I/O `\pause`{=latex}
+* For bidirectional I/O, you specify physical pin and
+  output enable, it gives you an input and output
+
+## Implementing the host interface {.t}
+
+`ext_data_bus.v` module: one `SB_IO` instance per data bus pin `\pause`{=latex}
+
+E.g.:
+
+```verilog { .scriptsize }
+  SB_IO #(
+    .PIN_TYPE(6'b1010_01),
+    .PULLUP(1'b1)
+  ) ext_pin_0 (
+    .PACKAGE_PIN(phys[0]),
+    .OUTPUT_ENABLE(outputEnable),
+    .D_OUT_0(outToBus[0]),
+    .D_IN_0(inFromBus[0])
+  );
+```
+
+ `\pause `{=latex} Output enable is simply the read strobe! `\pause`{=latex}
+
+Read strobe, write strobe, and data bus directly interface to the VRAM `\pause`{=latex}
+
+VGA dot clock (used for synchronous block RAM reads/writes) is fast,
+host access should work as long as there is one dot clock edge
+during a bus transfer
+
+## Does it work? {.t}
+
+At this point I had what I thought was a viable host interface `\pause`{=latex}
+
+**Would it actually work?**
