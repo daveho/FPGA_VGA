@@ -9,11 +9,8 @@ the same approach as the HW\_VGA project, but using a
 on an [Upduino 3.1](https://tinyvision.ai/products/upduino-v3-1) (or 3.0) board
 rather than discrete logic, GALs, and dual port static RAM.
 
-As of early August 2024, the design generates a valid 640x480 VGA signal,
-implements video RAM and font ROM using block RAM, and correctly displays
-a test image. Test benches for the sync logic and character/attribute fetch
-logic are implemented. All that remains is to implement a host interface so
-the host system can write data to the video memory.
+As of December 2025, the design is fully working. I made a video about it:
+<https://youtu.be/PG1XWQCylTA>.
 
 The [Schematic](Schematic) directory has a KiCad schematic, and the
 [Logic](Logic) directory has the Verilog code for the FPGA. I use
@@ -30,9 +27,10 @@ incredibly helpful. By applying the techniques covered in the simulation video, 
 basically went from having no idea how to simulate designs to being able to write
 some halfway-reasonable testbenches in a day or two. Thank you, John!
 
-Stay tuned!
-
 ## Updates
+
+**27-Dec-2025**: A [Youtube video](https://youtu.be/PG1XWQCylTA) about the
+project has been posted.
 
 **25-Nov-2025**: the entire design, including a bidirectional
 interface to allow the host system to write to and read from VRAM,
